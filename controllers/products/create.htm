@@ -1,0 +1,45 @@
+<?php Block::put('breadcrumb') ?>
+<style>div.control-breadcrumb {margin-bottom: 0;}
+#Form-field-Product-price_cost-group {
+    width: 200px;
+    display: inline-block;
+    float: left;
+    margin-left: 3%;
+}
+
+#Form-field-Product-price_sale-group {
+    width: 200px;
+    display: inline-block;
+    float: left;
+    margin-left: 30px;
+}
+
+#Form-field-Product-iva-group {
+    width: 200px;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+}
+</style>
+    <ul>
+        <li><a href="<?= Backend::url('awme/stocket/products') ?>"><?=e(trans('awme.stocket::lang.products.products'))?></a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="layout fancy-layout">
+        <?= Form::open(['class' => 'layout']) ?>
+
+            <?= $this->formRender() ?>
+
+        <?= Form::close() ?>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('awme/stocket/products') ?>" class="btn btn-default">Return to product list</a></p>
+
+<?php endif ?>

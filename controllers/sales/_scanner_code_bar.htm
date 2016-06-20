@@ -1,0 +1,53 @@
+<style>
+#addProductField {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 45px;
+    background: #f2f2f2;
+    border-style: solid;
+    border-color: #e1e1e1;
+    padding: 4px;
+}
+
+
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+    <?= Form::open(['class'=>'layout', 'id'=>'addProductFormScanner']) ?>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><?=trans("awme.stockist::lang.sales.barcode_modal_title")?></h4>
+        </div>
+        <div class="modal-body">
+
+                <div class="layout-row">
+                    <input type="text" name="addProduct[sku]" value="" id="addProductField" placeholder="<?=trans("awme.stockist::lang.sales.barcode_placehold")?>" maxlength="110">
+                </div>
+
+        </div>
+        <div class="modal-footer">
+            <button
+                type="button"
+                id="onAddProductFormScanner"
+                data-request="onAddProductFormScanner"
+                data-request-update="scanner_results: '#scanner_results'"
+                data-hotkey="enter"
+                data-request-data="close:true"
+                class="btn btn-success">
+                <?=trans("awme.stockist::lang.sales.add_product")?>
+            </button>
+            <button type="button" id="modal-scanner-close" class="btn btn-default" data-dismiss="modal"><?= e(trans('backend::lang.form.close')) ?></button>
+        </div>
+    <?= Form::close() ?>
+    </div>
+</div>
+
+<div id="scanner_results">
+    
+</div>
+<script>
+    $(document).ready(function(){
+        $("#addProductField").focus();
+    });
+</script>
+

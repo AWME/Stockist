@@ -1,0 +1,19 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    pivot[quantity]:
+        label: Cantidad
+        span: auto
+        default: 1
+    pivot[price]:
+        label: Precio de Venta
+        span: auto
+        context: update
+
+#    pivot[subtotal]:
+#        label: Subtotal 
+#        span: auto
+#        context: update
+

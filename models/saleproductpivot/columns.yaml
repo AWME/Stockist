@@ -1,0 +1,20 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        invisible: true
+    name:
+        label: Nombre
+        searchable: true
+        width: 50%
+    #price_sale:
+    #    label: Precio
+    pivot[price]:
+        label: Precio de venta
+    pivot[quantity]:
+        label: Cantidad
+    pivot[subtotal]:
+        label: Subtotal

@@ -1,0 +1,77 @@
+
+<div id="invoice-table">
+    <table class="table data subtotal" data-control="rowlink">
+        <thead>
+            <tr>
+                <th width="30%">Detalle</th>
+                <th width="10%">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tfoot id="total">
+            <tr class="info">
+                <td class="subtitle">Subtotal:</td>
+                <td>$ <span id="subtotal-to-pay"><?= $sale->subtotal ?></span></td>
+                <td></td>
+            </tr>
+
+            <tr class="danger">
+                <td class="subtitle">Recargo/Descuento:</td>
+                <td>
+                    <input style="width: 141px;" name="Sale[tax][amount]" type="number" value="<?=@$sale['tax']['amount']?>">
+                    <select name="Sale[tax][type]">
+                        <option value="%">%</option>
+                        <option value="$" <?=(@$sale['tax']['type'] == '$') ? 'selected': '';?>>$</option>
+                    </select>
+                </td>
+                <td class="discount"></td>
+            </tr>
+
+            <tr class="success">
+                <td class="subtitle">Total:</td>
+                <td>
+                    $ <span id="total-to-pay"><?= $sale->total ?></span> 
+                </td>
+                <td>
+                    <button id="paid-recalculate" class="btn btn-xs btn-primary oc-icon-calculator" type="button" 
+                        data-hotkey="ctrl+enter"
+                        data-request="onRecalculate" 
+                        data-request-update="'invoice_checkout': '#invoice-table'"
+                        data-load-indicator="Recalculate Product..."
+                        > Recalcular </button>
+                </td>
+            </tr>
+
+            <tr class="default">
+                <td class="subtitle">Pagado:</td>
+                <td>
+                    <input id="paid-out" name="Sale[tax][paid_out]" type="number" value="<?=@$sale['tax']['paid_out']?>">
+                </td>
+                <td>
+                    <button id="exact-fare" type="button" class="btn btn-default btn-xs oc-icon-money">Pago Exacto</button>
+                </td>
+            </tr>
+            <tr class="default">
+                <td class="subtitle">Cambio:</td>
+                <td>
+                    <input name="Sale[tax][get_change]" type="number" value="<?=@$sale['tax']['change']?>" disabled>
+                    <input name="Sale[tax][change]" type="hidden" value="<?=@$sale['tax']['change']?>" disabled>
+                </td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+<script>
+    $('#exact-fare').click(function(){
+        var total = $('#total-to-pay').text();
+        $('#paid-out').val($('#total-to-pay').text());
+        $('#paid-recalculate').click();
+    });
+
+
+
+</script>

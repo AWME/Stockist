@@ -1,0 +1,36 @@
+plugin:
+    name: Stockist
+    description: 'Herramienta de control de Stock y Ventas para comercios.'
+    author: 'LucasZdv, Awebsome'
+    icon: oc-icon-shopping-cart
+    homepage: 'http://awebsome.me'
+navigation:
+    stockist:
+        label: 'awme.stockist::lang.plugin.name'
+        url: awme/stockist/products
+        icon: icon-cubes
+        permissions:
+            - awme.stockist.usage
+        sideMenu:
+            stockist-sales:
+                label: 'awme.stockist::lang.sales.menu_label'
+                url: awme/stockist/sales
+                icon: icon-cart-plus
+                permissions:
+                    - awme.stockist.read_sales
+            stockist-products:
+                label: Products
+                url: awme/stockist/products
+                icon: icon-cubes
+                permissions:
+                    - awme.stockist.read_products
+            stockist-categories:
+                label: 'awme.stockist::lang.categories.menu_label'
+                url: awme/stockist/categories
+                icon: icon-folder-open
+                permissions:
+                    - awme.stockist.read_categories
+permissions:
+    awme.stockist.usage:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.usage'

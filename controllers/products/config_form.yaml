@@ -1,0 +1,10 @@
+name: Products
+form: $/awme/stockist/models/product/fields.yaml
+modelClass: AWME\Stockist\Models\Product
+defaultRedirect: awme/stockist/products
+create:
+    redirect: 'awme/stockist/products/update/:id'
+    redirectClose: awme/stockist/products
+update:
+    redirect: awme/stockist/products
+    redirectClose: awme/stockist/products

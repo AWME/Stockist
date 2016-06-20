@@ -1,0 +1,103 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: awme.stockist::lang.products.title
+        span: left
+        placeholder: awme.stockist::lang.products.product_name
+        required: true
+    sku:
+        label: SKU
+        type: text
+        placeholder: awme.stockist::lang.products.sku
+        span: right
+    
+
+    toolbar:
+        type: partial
+        path: product_toolbar
+        cssClass: collapse-visible
+
+secondaryTabs:
+    stretch: true
+    fields:
+        slug:
+            tab: awme.stockist::lang.products.product
+            label: Slug
+            span: left
+            required: true
+            preset:
+                field: name
+                type: slug
+
+            
+        is_enabled:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.products.is_enabled
+            type: switch
+            span: right
+            default: true
+
+        is_stockable:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.products.is_stockable
+            type: switch
+            span: right
+            default: true
+        
+        categories:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.categories.categories
+            type: recordfinder
+            list: $/awme/stockist/models/category/columns.yaml
+            prompt: awme.stockist::lang.categories.category_find
+            nameFrom: name
+            span: left
+            descriptionFrom: description
+        
+
+        stock:
+            tab: awme.stockist::lang.products.product
+            label: Stock
+            type: number
+            span: right
+            required: true
+            attributes:
+                style: 'max-width: 200px;'
+        
+        description:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.invoice.description
+            type: textarea
+            size: large
+            span: left
+
+        price_cost:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.products.price_cost
+            type: number
+            size: tiny
+            span: right
+            required: true
+            attributes:
+                style: 'max-width: 200px;'
+
+        price_sale:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.products.price_sale
+            type: number
+            span: right
+            required: true
+            attributes:
+                style: 'max-width: 200px;'
+
+        iva:
+            tab: awme.stockist::lang.products.product
+            label: awme.stockist::lang.products.iva
+            type: number
+            span: right
+            attributes:
+                style: 'max-width: 80px;'
+                maxlength: '5'

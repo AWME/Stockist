@@ -1,0 +1,32 @@
+fields:
+    name:
+        label: 'awme.stockist::lang.categories.name'
+        oc.commentPosition: ''
+        span: left
+        placeholder: 'awme.stockist::lang.categories.name_place'
+        required: true
+        type: text
+    slug:
+        label: Slug
+        span: right
+        required: true
+        preset:
+            field: name
+            type: slug
+        type: text
+    description:
+        label: 'awme.stockist::lang.categories.description'
+        size: huge
+        oc.commentPosition: ''
+        span: left
+        type: textarea
+    is_enabled:
+        label: 'awme.stockist::lang.categories.enable'
+        span: right
+        default: true
+        type: switch
+    is_visible:
+        label: 'awme.stockist::lang.categories.visible'
+        span: right
+        default: true
+        type: switch

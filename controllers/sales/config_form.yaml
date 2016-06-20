@@ -1,0 +1,10 @@
+name: awme.stockist::lang.sales.sale
+form: $/awme/stockist/models/sale/fields.yaml
+modelClass: AWME\Stockist\Models\Sale
+defaultRedirect: awme/stockist/sales
+create:
+    redirect: 'awme/stockist/sales/update/:id'
+    redirectClose: awme/stockist/sales
+update:
+    redirect: 'awme/stockist/sales/update/:id'
+    redirectClose: awme/stockist/sales

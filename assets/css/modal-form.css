@@ -1,0 +1,122 @@
+.form-group.half-width {
+    width: 24.25%;
+}
+.form-group.noclear {
+    clear: none;
+}
+@media (max-width: 769px) {
+    .form-group.half-width {
+        width: 50%;
+    }
+}
+
+.modal form[data-request="onRelationManageCreate"] div[data-field-name="toolbar"],
+.modal form[data-request="onRelationManageCreate"] div[data-field-name="primary_image"],
+.modal form[data-request="onRelationManageCreate"] div[data-field-name="secondary_image"],
+.modal form[data-request="onRelationManageUpdate"] div[data-field-name="toolbar"] {
+    display: none;
+}
+
+/**
+ * Hide redactor's fullscreen button until z-index is fixed in core
+ */
+.modal form[data-request="onRelationManageCreate"] .redactor-btn-right,
+.modal form[data-request="onRelationManageUpdate"] .redactor-btn-right {
+    display: none;
+}
+
+
+#invoice-table button.btn {
+    border-style: none;
+    font-weight: normal;
+}
+
+#invoice-table table input.form-control {
+    font-size: 15px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 125px;
+}
+
+#invoice-table table.table.data.subtotal {
+    border-color: #d1d1d1;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#invoice-table table.table.data.subtotal th {
+    padding-bottom: 12px;
+    padding-left: 20px;
+    padding-right: 12px;
+    padding-top: 12px;
+    text-transform: uppercase;
+}
+
+#invoice-table table.table.data.subtotal tr td {
+    font-size: 16px;
+}
+
+#invoice-table td.discount input {
+    height: 30px;
+    padding-left: 5px;
+    width: 80px;
+}
+
+#invoice-table td.discount select {
+    height: 30px;
+}
+
+#invoice-table tfoot tr td.subtitle {
+    text-align: right;
+}
+
+#invoice-table tr.success td {
+    font-weight: bold;
+}
+
+
+
+
+
+
+.payment-block .radio {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+div.payment-block {
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-right: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e0e0e0;
+    border-radius: 5px;
+    background-color: #dff0d8;
+    height: 50px;
+}
+
+div.payment-block label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#total tr.info td {
+    border-style: solid;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-color: #a9a9a9;
+    border-top-width: 5px;
+}
+
+button.invoice-checkout.btn-lg.btn-success.oc-icon-shopping-cart {
+    float: right;
+    margin-top: 20px;
+    border-style: none;
+    height: 50px;
+}
+

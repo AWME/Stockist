@@ -1,0 +1,28 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        invisible: true
+    fullname:
+        label: awme.stockist::lang.invoice.fullname
+        searchable: true
+    invoice:
+        label: awme.stockist::lang.invoice.invoice
+        searchable: true
+    description:
+        label: awme.stockist::lang.invoice.description
+    subtotal:
+        label: awme.stockist::lang.sales.subtotal
+    total:
+        label: awme.stockist::lang.sales.total    
+    payment:
+        label: awme.stockist::lang.invoice.payment
+    status:
+        label: awme.stockist::lang.invoice.status
+
+    created_at:
+        label: Date Created
+        type: datetime

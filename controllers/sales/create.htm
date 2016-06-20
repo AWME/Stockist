@@ -1,0 +1,24 @@
+<?php Block::put('breadcrumb') ?>
+<style>div.control-breadcrumb {margin-bottom: 0;}</style>
+    <ul>
+        <li><a href="<?= Backend::url('awme/stockist/sales') ?>"><?=e(trans('awme.stockist::lang.sales.sales'))?></a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="layout fancy-layout">
+        <?= Form::open(['class' => 'layout']) ?>
+
+            <?= $this->formRender() ?>
+
+        <?= Form::close() ?>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('awme/stockist/sales') ?>" class="btn btn-default"><?=e(trans('awme.stockist::lang.sales.return_to_manage_sales'))?></a></p>
+
+<?php endif ?>

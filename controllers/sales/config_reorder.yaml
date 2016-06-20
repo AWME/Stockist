@@ -1,0 +1,4 @@
+title: awme.stockist::lang.sales.sales
+modelClass: AWME\Stockist\Models\Sale
+toolbar:
+    buttons: reorder_toolbar

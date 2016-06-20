@@ -1,0 +1,10 @@
+name: Categories
+form: $/awme/stockist/models/category/fields.yaml
+modelClass: AWME\Stockist\Models\Category
+defaultRedirect: awme/stockist/categories
+create:
+    redirect: 'awme/stockist/categories/update/:id'
+    redirectClose: awme/stockist/categories
+update:
+    redirect: awme/stockist/categories
+    redirectClose: awme/stockist/categories

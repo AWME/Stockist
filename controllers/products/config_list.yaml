@@ -1,0 +1,11 @@
+list: $/awme/stockist/models/product/columns.yaml
+modelClass: AWME\Stockist\Models\Product
+title: Products
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'awme/stockist/products/update/:id'

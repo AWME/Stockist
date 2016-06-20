@@ -1,0 +1,99 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    fullname:
+        label: awme.stockist::lang.invoice.fullname
+        span: left
+        placeholder: awme.stockist::lang.invoice.fullname
+        required: true
+
+    invoice:
+        label: awme.stockist::lang.invoice.invoice
+        span: right
+        placeholder: awme.stockist::lang.invoice.invoice_number
+        required: true
+
+    toolbar:
+        type: partial
+        path: sale_toolbar
+        cssClass: collapse-visible
+
+secondaryTabs:
+    stretch: true
+    fields:
+        add_product_by_barcode:
+            label: 'awme.stockist::lang.sales.products_codebar'
+            commentAbove: 'awme.stockist::lang.sales.add_product_by_barcode'
+            type: partial
+            path: add_product_by_barcode_button
+            tab: 'awme.stockist::lang.products.products'
+            span: left
+            context: update
+
+        products_pivot_model:
+            label: 'awme.stockist::lang.sales.products'
+            commentAbove: 'awme.stockist::lang.sales.product_list_selected'
+            type: partial
+            tab: 'awme.stockist::lang.products.products'
+            span: left
+            context: update
+
+        invoice_checkout:
+            label: 'awme.stockist::lang.sales.receipt_of_payment'
+            commentAbove: 'awme.stockist::lang.sales.receipt_of_payment_details'
+            type: partial
+            tab: 'awme.stockist::lang.products.products'
+            span: right
+            context: update
+        
+
+        description:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.description
+            type: richeditor
+            span: left
+
+        dni:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: CUIL/CUIT
+            placeholder: CUIL/CUIT/DNI
+            span: right
+
+
+        phone:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.phone
+            placeholder: awme.stockist::lang.invoice.phone
+            span: right
+
+        email:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: Email
+            placeholder: Email
+            span: right
+
+        address:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.address
+            placeholder: awme.stockist::lang.invoice.address
+            span: right
+
+        city:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.city
+            placeholder: awme.stockist::lang.invoice.city
+            span: right
+
+        state:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.state
+            placeholder: awme.stockist::lang.invoice.state
+            span: right
+
+        country:
+            tab: awme.stockist::lang.invoice.invoicing
+            label: awme.stockist::lang.invoice.country
+            placeholder: awme.stockist::lang.invoice.country
+            span: right
