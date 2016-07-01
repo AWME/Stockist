@@ -67,7 +67,7 @@ class Sales extends Controller
 
         $this->asExtension('FormController')->update($recordId, $context);
 
-        Flash::info(e(trans('awme.stockist::lang.sales.invoice_recalculate')));
+        #Flash::info(e(trans('awme.stockist::lang.sales.invoice_recalculate')));
     }
 
     /**

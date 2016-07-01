@@ -1,0 +1,41 @@
+fields:
+    name:
+        label: 'awme.stockist::lang.paymethods.name'
+        span: left
+        placeholder: 'awme.stockist::lang.paymethods.name_place'
+        required: true
+        type: text
+    code:
+        label: 'awme.stockist::lang.paymethods.code'
+        span: right
+        required: true
+        preset:
+            field: name
+            type: slug
+        type: text
+        attributes:
+            maxlength: '8'
+    description:
+        label: 'awme.stockist::lang.paymethods.description'
+        size: huge
+        span: left
+        type: textarea
+    tax_type:
+        label: 'awme.stockist::lang.paymethods.long_tax_type'
+        span: right
+        type: dropdown
+        cssClass: 'tax-amount-type'
+        options:
+            none: 'awme.stockist::lang.paymethods.tax_by_none'
+            '%': 'awme.stockist::lang.paymethods.tax_by_percent'
+            '$': 'awme.stockist::lang.paymethods.tax_by_amount'
+    tax_amount:
+        label: 'awme.stockist::lang.paymethods.tax_amount'
+        comment: 'awme.stockist::lang.paymethods.tax_comment'
+        span: right
+        type: number
+        cssClass: 'tax-amount'
+        trigger:
+            action: hide
+            field: tax_type
+            condition: value[none]

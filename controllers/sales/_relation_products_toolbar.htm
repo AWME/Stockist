@@ -1,0 +1,49 @@
+<a 
+    id="add-by-scanner"
+    data-control = "popup" 
+    data-handler = "onScannerCodeBar"
+    href = "javascript:;" 
+    class = "btn btn-sm btn-warning oc-icon-barcode"
+    data-hotkey="ctrl+space"
+    data-toggle="tooltip"
+    data-placement="top"
+    data-delay="500"
+    data-original-title="Producto por scanner (Spacebar)"
+    >
+    <?=trans("awme.stockist::lang.sales.add_products")?>
+</a>
+<a
+    data-control="popup"
+    data-size="huge"
+    data-handler="onRelationButtonAdd"
+    href="javascript:;"
+    class="btn btn-sm btn-primary oc-icon-plus">
+    <?= e(trans('backend::lang.relation.add_name', ['name'=>trans($relationLabel)])) ?>
+</a>
+<?php if ($relationViewMode == 'single'): ?>
+    <button
+        class="btn btn-sm btn-default oc-icon-minus"
+        data-request="onRelationButtonRemove"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.relation.remove')) ?>
+    </button>
+<?php else: ?>
+    <button
+        id="product-sale-remove"
+        class="btn btn-sm btn-default oc-icon-minus"
+        onclick="$(this).data('request-data', {
+            checked: $('#<?= $this->relationGetId('view') ?> .control-list').listWidget('getChecked')
+        })"
+        disabled="disabled"
+        data-request="onRelationButtonRemove"
+        data-trigger-action="enable"
+        data-trigger="#<?= $this->relationGetId('view') ?> .control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.relation.remove')) ?>
+    </button>
+<?php endif ?>
+
+<script>
+    $('#paid-recalculate').click();
+</script>

@@ -2,5 +2,8 @@
     - Initialize plugin.
     - create_categories_table.php
     - create_products_table.php
+    - create_pay_methods_table.php
     - create_sales_table.php
     - create_sales_products_table.php
+    - create_tills_table.php
+    - create_sales_pay_methods_table.php

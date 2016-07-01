@@ -13,9 +13,11 @@ class CreateSalesProductsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
 
-            $table->integer('sale_id')->unsigned()->nullable();
-            $table->integer('product_id')->unsigned()->nullable();
-            $table->integer('quantity')->nullable();
+            $table->integer('sale_id');
+            $table->integer('product_id');
+            $table->index(['sale_id', 'product_id']);
+            
+            $table->decimal('quantity', 10, 2)->default(0)->nullable();
 
             $table->decimal('price', 10, 2)->default(0)->nullable();    # precio de venta
             $table->decimal('subtotal', 10, 2)->default(0)->nullable(); # price * quantity

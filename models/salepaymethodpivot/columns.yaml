@@ -1,0 +1,21 @@
+columns:
+    code:
+        label: 'awme.stockist::lang.paymethods.pay'
+        type: text
+    name:
+        label: 'awme.stockist::lang.paymethods.menu_label'
+        type: text
+        invisible: true
+    description:
+        label: 'awme.stockist::lang.paymethods.description'
+        type: text
+    pivot[concept]:
+        label: awme.stockist::lang.paymethods.concept
+        width: 15%
+        cssClass: 'payConcept'
+    taxes:
+        label: 'awme.stockist::lang.paymethods.tax_type'
+        select: concat(tax_type, ' ', tax_amount)
+    pivot[total]:
+        label: awme.stockist::lang.paymethods.charge
+        width: 15%

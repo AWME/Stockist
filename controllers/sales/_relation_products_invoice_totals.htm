@@ -1,0 +1,45 @@
+<style>
+.callout{margin-bottom:2px}div.content p{font-family:Consolas}.content p small{font-size:12px}#callout-taxes input{margin-left:8px;width:22%;height:25px}#callout-taxes select{width:40px;height:25px}#callout-subtotal .content{font-size:20px;padding:5px 5px 5px 10px}#callout-taxes .content{padding:5px}#callout-total .content{font-size:50px;padding:0 0 0 10px}
+</style>
+
+<div id="invoice-table">
+    <div id="callout-subtotal" class="callout callout-info">
+        <div class="content">
+            <p><small>Subtotal:</small> <span>$<?= $sale->subtotal ?></span></p>
+        </div>
+    </div>
+    
+    <div id="callout-taxes" class="callout callout-warning">
+        <div class="content">
+            <p>
+                <small><?=trans('awme.stockist::lang.paymethods.tax_type');?>:</small> 
+                <input id="tax-amount" placeholder="Recargo/Descuento:" maxlength="9" name="Sale[tax][amount]" type="number" value="<?=@$sale['tax']['amount']?>">
+                <select id="tax-type" name="Sale[tax][type]" >
+                    <option value="%">%</option>
+                    <option value="$" <?=(@$sale['tax']['type'] == '$') ? 'selected': '';?>>$</option>
+                </select>
+            </p>
+        </div>
+    </div>
+
+    <div id="callout-total" class="callout callout-success">
+        <div class="content">
+            <p><small>Total:</small> <span>$<span id="total-to-pay"><?=$sale->total ?></span> 
+                <button id="paid-recalculate" class="btn btn-xs btn-default oc-icon-refresh" type="button" 
+                data-hotkey="ctrl+enter"
+                data-request="onRecalculate" 
+                data-request-update="'relation_products_invoice_totals': '#invoice-table'"
+                data-load-indicator="aplicar"
+                > Refresh </button></span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $( "#total-to-pay" ).fadeOut('fast').fadeIn( 1800 );
+    
+    $('#tax-type, #tax-amount').change(function(){
+        $('#paid-recalculate').click();
+    });
+</script>

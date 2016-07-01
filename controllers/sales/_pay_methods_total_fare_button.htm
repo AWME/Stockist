@@ -1,0 +1,26 @@
+<button id="exact-fare" style="margin-top: 43px;" type="button" class="btn btn-default btn-xs oc-icon-money">Pago Exacto</button>
+
+<script>
+
+    function sumaConcept()
+    {
+        var totalPayConcept = 0.0; // Initial Total
+        var rowSelect = 'tbody td.payConcept';
+
+        $(rowSelect).each(function(row){
+
+                var rowTotal = $(rowSelect+':eq('+row+')').text();
+
+                totalPayConcept = (parseFloat(totalPayConcept) + parseFloat(rowTotal));
+        })
+        
+        return totalPayConcept;
+    };
+
+    $('#exact-fare').click(function(){
+        var total = $('#total-to-pay').text();
+        var totalToPay = parseFloat(total) - parseFloat(sumaConcept());
+        $('#Form-relationPayMethodsManagePivotForm-field-PayMethod-pivot-concept').val(totalToPay);
+    });
+
+</script>

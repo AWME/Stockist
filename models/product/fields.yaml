@@ -4,7 +4,7 @@
 
 fields:
     name:
-        label: awme.stockist::lang.products.title
+        label: awme.stockist::lang.products.product_name
         span: left
         placeholder: awme.stockist::lang.products.product_name
         required: true

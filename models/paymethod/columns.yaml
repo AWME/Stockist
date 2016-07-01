@@ -1,0 +1,20 @@
+columns:
+    code:
+        label: 'awme.stockist::lang.paymethods.code'
+        type: text
+        searchable: true
+        width: '6%'
+    name:
+        label: 'awme.stockist::lang.paymethods.menu_label'
+        type: text
+        searchable: true
+        sortable: true
+        width: '20%'
+    description:
+        label: 'awme.stockist::lang.paymethods.description'
+        type: text
+        searchable: true
+        width: '20%'
+    taxes:
+        label: 'awme.stockist::lang.paymethods.tax_type'
+        select: concat(tax_type, ' ', tax_amount)

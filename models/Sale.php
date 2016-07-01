@@ -45,6 +45,14 @@ class Sale extends Model
             'timestamps' => true,
             'pivotModel' => 'AWME\Stockist\Models\SaleProductPivot',
         ],
+        'pay_methods' => [
+            'AWME\Stockist\Models\PayMethod',
+            'table' => 'awme_stockist_sales_pay_methods',
+            'key'   => 'sale_id',
+            'pivot' => ['concept','total'],
+            'timestamps' => true,
+            'pivotModel' => 'AWME\Stockist\Models\SalePayMethodPivot',
+        ],
         
     ];
 
@@ -53,7 +61,7 @@ class Sale extends Model
         $this->setTaxes();      # Guarda los Sale.tax fields.
         $this->setSubtotal();   # Operación del subtotal de la venta.
         $this->setTotal();      # Operación del total de la venta.
-        $this->setPaidOut();    # Pago y Cambio
+        #$this->setPaidOut();    # Pago y Cambio
     }
 
     public function afterDelete()

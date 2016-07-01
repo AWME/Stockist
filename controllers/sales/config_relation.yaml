@@ -5,10 +5,22 @@ products_pivot_model:
     label: awme.stockist::lang.sales.products
     view:
         list: ~/plugins/awme/stockist/models/saleproductpivot/columns.yaml
-        toolbarButtons: add|remove
+        toolbarPartial: relation_products_toolbar
         showSearch: true
+        showSetup: true
     manage:
         list: ~/plugins/awme/stockist/models/product/columns.yaml
         showSearch: true
     pivot:
         form: ~/plugins/awme/stockist/models/saleproductpivot/fields.yaml
+
+pay_methods:
+    label: awme.stockist::lang.paymethods.pays
+    view:
+        list: ~/plugins/awme/stockist/models/salepaymethodpivot/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        list: ~/plugins/awme/stockist/models/paymethod/columns.yaml
+        showSearch: true
+    pivot:
+        form: ~/plugins/awme/stockist/models/salepaymethodpivot/fields.yaml

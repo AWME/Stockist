@@ -1,0 +1,4 @@
+title: PayMethods
+modelClass: AWME\Stockist\Models\PayMethod
+toolbar:
+    buttons: reorder_toolbar

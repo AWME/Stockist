@@ -3,7 +3,7 @@
 use Flash;
 
 use October\Rain\Database\Pivot;
-use AWME\Stockist\Classes\Calculator;
+use AWME\Stockist\Classes\Calculator as Calc;
 
 use AWME\Stockist\Models\Product;
 use AWME\Stockist\Models\Sale;
@@ -48,6 +48,8 @@ class SaleProductPivot extends Pivot
      * setProductSubtotal()
      * Aplica el subtotal al producto
      * Operación ($price * $quantity)
+     *
+     * OJO ESTA FUNCION SE REPITE TAL CUAL EN "Models\SaleProduct"
      */
     public function setProductSubtotal()
     {
@@ -56,7 +58,8 @@ class SaleProductPivot extends Pivot
          * $price_sale (product)
          * @var integer #Precio de venta.
          */
-        $price_sale = Product::find($this->product_id)->price_sale;
+        $Product = Product::find($this->product_id);
+        $price_sale = $Product->price_sale;
 
         if(!isset($this->attributes['price']) || empty($this->attributes['price']))
         {
@@ -65,6 +68,7 @@ class SaleProductPivot extends Pivot
             $this->price = ($this->attributes['price'] > 0) ? $this->attributes['price'] : $price_sale;
         }
 
-        $this->subtotal = ($this->price * $this->quantity);
+        $subtotal = ($this->price * $this->quantity);
+        $this->subtotal = ($subtotal + Calc::percent($Product->iva, $subtotal));
     }
 }

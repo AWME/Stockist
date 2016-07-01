@@ -10,12 +10,18 @@ columns:
         label: SKU
         searchable: true
     name:
-        label: awme.stockist::lang.products.title
+        label: awme.stockist::lang.products.product_name
         searchable: true
     description:
         label: awme.stockist::lang.products.description
     stock:
         label: Stock
+    price_cost:
+        label: awme.stockist::lang.products.price_cost
+        invisible: true
     price_sale:
-        label: awme.stockist::lang.invoice.price
+        label: awme.stockist::lang.products.price_sale
+    iva:
+        label: awme.stockist::lang.products.iva
+        invisible: true
     

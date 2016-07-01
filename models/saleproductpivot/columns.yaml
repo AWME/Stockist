@@ -7,14 +7,16 @@ columns:
         label: ID
         invisible: true
     name:
-        label: Nombre
+        label: awme.stockist::lang.products.product_name
         searchable: true
-        width: 50%
-    #price_sale:
-    #    label: Precio
+        width: 35%
     pivot[price]:
-        label: Precio de venta
+        label: awme.stockist::lang.products.price
+        width: 15%
+    iva:
+        label: awme.stockist::lang.products.iva
+        width: 15%
     pivot[quantity]:
-        label: Cantidad
+        label: awme.stockist::lang.products.quantity
     pivot[subtotal]:
-        label: Subtotal
+        label: awme.stockist::lang.sales.subtotal

@@ -1,6 +1,7 @@
 <?php namespace AWME\Stockist\Models;
 
 use Model;
+use AWME\Stockist\Classes\Calculator as Calc;
 
 /**
  * Model
@@ -53,7 +54,8 @@ class SaleProduct extends Model
          * $price_sale (product)
          * @var integer #Precio de venta.
          */
-        $price_sale = Product::find($this->product_id)->price_sale;
+        $Product = Product::find($this->product_id);
+        $price_sale = $Product->price_sale;
 
         if(!isset($this->attributes['price']) || empty($this->attributes['price']))
         {
@@ -62,6 +64,7 @@ class SaleProduct extends Model
             $this->price = ($this->attributes['price'] > 0) ? $this->attributes['price'] : $price_sale;
         }
 
-        $this->subtotal = ($this->price * $this->quantity);
+        $subtotal = ($this->price * $this->quantity);
+        $this->subtotal = ($subtotal + Calc::percent($Product->iva, $subtotal));
     }
 }

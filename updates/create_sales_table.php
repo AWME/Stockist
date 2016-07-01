@@ -11,11 +11,11 @@ class CreateSalesTable extends Migration
         Schema::create('awme_stockist_sales', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('seller_id');
 
             /**
              * Venta
              */
-            $table->string('seller')->nullable();
             $table->longText('description')->nullable();
             
             $table->string('tax')->nullable();    # type json: [amount, type] 

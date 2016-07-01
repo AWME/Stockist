@@ -18,6 +18,18 @@ navigation:
                 icon: icon-cart-plus
                 permissions:
                     - awme.stockist.read_sales
+            stockist-tills:
+                label: 'awme.stockist::lang.tills.menu_label'
+                url: awme/stockist/tills
+                icon: icon-usd
+                permissions:
+                    - awme.stockist.read_tills
+            stockist-paymethods:
+                label: 'awme.stockist::lang.paymethods.menu_label'
+                url: awme/stockist/paymethods
+                icon: icon-credit-card
+                permissions:
+                    - awme.stockist.read_paymethods
             stockist-products:
                 label: Products
                 url: awme/stockist/products
@@ -34,3 +46,18 @@ permissions:
     awme.stockist.usage:
         tab: 'awme.stockist::lang.plugin.name'
         label: 'awme.stockist::lang.permission.usage'
+    awme.stockist.read_tills:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.read_tills'
+    awme.stockist.read_sales:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.read_sales'
+    awme.stockist.read_paymethods:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.read_paymethods'
+    awme.stockist.read_products:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.read_products'
+    awme.stockist.read_categories:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'awme.stockist::lang.permission.read_categories'

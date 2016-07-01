@@ -1,0 +1,10 @@
+name: PayMethods
+form: $/awme/stockist/models/paymethod/fields.yaml
+modelClass: AWME\Stockist\Models\PayMethod
+defaultRedirect: awme/stockist/paymethods
+create:
+    redirect: 'awme/stockist/paymethods/update/:id'
+    redirectClose: awme/stockist/paymethods
+update:
+    redirect: awme/stockist/paymethods
+    redirectClose: awme/stockist/paymethods

@@ -23,31 +23,43 @@ fields:
 secondaryTabs:
     stretch: true
     fields:
-        add_product_by_barcode:
-            label: 'awme.stockist::lang.sales.products_codebar'
-            commentAbove: 'awme.stockist::lang.sales.add_product_by_barcode'
-            type: partial
-            path: add_product_by_barcode_button
-            tab: 'awme.stockist::lang.products.products'
-            span: left
-            context: update
-
-        products_pivot_model:
+        
+        #Lista/Pivot De productos de venta.
+        sales_products:
             label: 'awme.stockist::lang.sales.products'
             commentAbove: 'awme.stockist::lang.sales.product_list_selected'
             type: partial
+            path: relation_products_sales
             tab: 'awme.stockist::lang.products.products'
             span: left
             context: update
-
-        invoice_checkout:
+        
+        #Metodos y pagos realizados
+        pay_methods:
             label: 'awme.stockist::lang.sales.receipt_of_payment'
             commentAbove: 'awme.stockist::lang.sales.receipt_of_payment_details'
-            type: partial
             tab: 'awme.stockist::lang.products.products'
+            type: partial
+            path: relation_pay_methods
             span: right
             context: update
         
+        # Detalles de totales de venta.
+        invoice_check:
+            tab: 'awme.stockist::lang.products.products'
+            type: partial
+            path: relation_products_invoice_totals
+            span: left
+            context: update
+
+
+        invoice_checkin_toolbar:
+            type: partial
+            tab: 'awme.stockist::lang.products.products'
+            span: right
+            path: sale_checkin_toolbar
+            context: update
+ 
 
         description:
             tab: awme.stockist::lang.invoice.invoicing

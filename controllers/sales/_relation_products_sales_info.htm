@@ -1,0 +1,31 @@
+<style>.product-detail thead th{font-size:20px}td.t-description{font-size:11px}</style>
+<div>
+    <div class="control-list list-unresponsive">
+        <table class="table data product-detail">
+            <thead>
+                <tr>
+                    <th><?= $model->name ?></th>
+                    <th></th>
+                    <th>Cod: <?= $model->sku ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Precio: <?= $model->price_sale ?></td>
+                    <td>Disponibles: <?= $model->stock ?></td>
+                    <td>Iva: <?= $model->iva ?></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="t-description"><?= $model->description ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $('form[data-request="onRelationManagePivotUpdate"], form[data-request="onRelationManagePivotCreate"]').ajaxComplete(function(){ 
+        $('#paid-recalculate').click();
+    });
+</script>
+

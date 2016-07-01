@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Forma de Pago
+        span: left
+        disabled: true
+    description:
+        label: description
+        type: textarea
+        size: tiny
+        span: full
+        disabled: true
+    pivot[concept]:
+        label: Concepto de
+        type: number
+        span: left
+        width: 40%
+    total_amount:
+        type: partial
+        path: pay_methods_total_fare_button
+        span: right
