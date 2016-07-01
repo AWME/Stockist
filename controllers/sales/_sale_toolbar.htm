@@ -10,10 +10,15 @@
             id="Sale-Save"
             type="submit"
             data-request="onSave"
-            data-request-data="redirect:1"
-            data-hotkey="ctrl+s, cmd+s"
-            data-load-indicator="Saving Sale..."
+            data-request-data="redirect:0"
+            data-load-indicator="<?=trans('backend::lang.form.save')?> <?=trans('awme.stockist::lang.sales.sale')?>..."
             class="btn btn-primary oc-icon-check save"
+
+            data-hotkey="ctrl+s"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            data-delay="500"
+            data-original-title="<?=e(trans('backend::lang.form.save'))?> (Ctrl+S)"
             >
             <?= e(trans('backend::lang.form.save')) ?>
         </button>
@@ -22,22 +27,36 @@
             type="button"
             data-request="onSave"
             data-request-data="close:1"
-            data-hotkey="ctrl+shift+s, cmd+enter"
-            data-load-indicator="Saving Sale..."
+            data-load-indicator="<?=trans('backend::lang.form.save_and_close')?> <?=trans('awme.stockist::lang.sales.sale')?>..."
             class="btn btn-default oc-icon-check save"
+
+            data-hotkey="ctrl+shift+s"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            data-delay="500"
+            data-original-title="<?=e(trans('backend::lang.form.save_and_close'))?> (Ctrl+Shift+S)"
             >
             <?= e(trans('backend::lang.form.save_and_close'))?>
         </button>
 
         <?php if (!$isCreate): ?>
+            <?php if($model->status != 'closed'): ?>
+                <button
+                    type="button"
+                    class="btn btn-default empty oc-icon-trash-o"
+                    data-request="onDelete"
 
-        <button
-            type="button"
-            class="btn btn-default empty oc-icon-trash-o"
-            data-request="onDelete"
-            data-load-indicator="Deleting Sale..."
-            data-request-confirm="Do you really want to delete this product?">
-        </button>
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-delay="500"
+                    data-original-title="<?=trans('backend::lang.form.delete')?>"
+
+                    data-load-indicator="<?=trans('backend::lang.form.delete')?> <?=trans('awme.stockist::lang.sales.sale')?>..."
+                    data-request-confirm="¿<?=trans('backend::lang.form.confirm')?> <?=trans('backend::lang.form.delete')?> <?=trans('awme.stockist::lang.sales.sale')?>?" 
+                    
+                    >
+                </button>
+            <?endif;?>
 
         <?php endif ?>
     </div>
