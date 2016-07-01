@@ -3,34 +3,51 @@
 </style>
 
 <div id="invoice-table">
+    
+    <?if($options['use_taxes']):?>
     <div id="callout-subtotal" class="callout callout-info">
         <div class="content">
-            <p><small>Subtotal:</small> <span>$<?= $sale->subtotal ?></span></p>
+            <p><small><?=trans('awme.stockist::lang.sales.subtotal');?>:</small> <span>$<?= $sale->subtotal ?></span></p>
         </div>
     </div>
-    
+
     <div id="callout-taxes" class="callout callout-warning">
         <div class="content">
             <p>
                 <small><?=trans('awme.stockist::lang.paymethods.tax_type');?>:</small> 
-                <input id="tax-amount" placeholder="Recargo/Descuento:" maxlength="9" name="Sale[tax][amount]" type="number" value="<?=@$sale['tax']['amount']?>">
-                <select id="tax-type" name="Sale[tax][type]" >
+                <input id="tax-amount" placeholder="<?=trans('awme.stockist::lang.paymethods._tax_type');?>" maxlength="9" name="Sale[tax][amount]" type="number" value="<?=@$sale['tax']['amount']?>">
+                <select 
+                data-toggle="tooltip"
+                data-placement="top"
+                data-delay="500"
+                data-original-title="<?=trans('awme.stockist::lang.invoice.aply_tax')?>"
+                id="tax-type" name="Sale[tax][type]" >
                     <option value="%">%</option>
                     <option value="$" <?=(@$sale['tax']['type'] == '$') ? 'selected': '';?>>$</option>
                 </select>
             </p>
         </div>
     </div>
+    <?endif;?>
 
     <div id="callout-total" class="callout callout-success">
         <div class="content">
-            <p><small>Total:</small> <span>$<span id="total-to-pay"><?=$sale->total ?></span> 
-                <button id="paid-recalculate" class="btn btn-xs btn-default oc-icon-refresh" type="button" 
-                data-hotkey="ctrl+enter"
-                data-request="onRecalculate" 
-                data-request-update="'relation_products_invoice_totals': '#invoice-table'"
-                data-load-indicator="aplicar"
-                > Refresh </button></span>
+            <p><small><?=trans('awme.stockist::lang.paymethods.total');?>:</small> 
+            <span>
+                $<span id="total-to-pay"><?=$sale->total ?></span> 
+                    <button id="paid-recalculate" class="btn btn-xs btn-default oc-icon-refresh" type="button" 
+                    
+                    data-request="onRecalculate" 
+                    data-request-update="'relation_products_invoice_totals': '#invoice-table'"
+                    data-load-indicator="<?=trans('awme.stockist::lang.sales.refresh_button');?>"
+                    
+                    data-hotkey="F1"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    data-delay="500"
+                    data-original-title="<?=trans('awme.stockist::lang.invoice.refresh_tooltip')?> (F1)"
+                    > <?=trans('awme.stockist::lang.sales.refresh_button');?> </button>
+            </span>
             </p>
         </div>
     </div>
