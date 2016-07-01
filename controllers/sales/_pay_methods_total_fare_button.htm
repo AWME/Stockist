@@ -19,7 +19,7 @@
 
     $('#exact-fare').click(function(){
         var total = $('#total-to-pay').text();
-        var totalToPay = parseFloat(total) - parseFloat(sumaConcept());
+        var totalToPay = (parseFloat(total) - parseFloat(sumaConcept())).toFixed(2);
         $('#Form-relationPayMethodsManagePivotForm-field-PayMethod-pivot-concept').val(totalToPay);
     });
 
