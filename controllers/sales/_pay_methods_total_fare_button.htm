@@ -1,4 +1,12 @@
-<button id="exact-fare" style="margin-top: 43px;" type="button" class="btn btn-default btn-xs oc-icon-money">Pago Exacto</button>
+<button 
+    data-hotkey="Ctrl+E"
+    data-toggle="tooltip"
+    data-placement="top"
+    data-delay="500"
+    data-original-title="<?=trans('awme.stockist::lang.paymethods.exact_fare')?> (Ctrl+E)"
+
+    id="exact-fare" 
+    style="margin-top: 43px;" type="button" class="btn btn-default btn-xs oc-icon-money"><?=trans('awme.stockist::lang.paymethods.exact_fare')?></button>
 
 <script>
 
@@ -21,6 +29,9 @@
         var total = $('#total-to-pay').text();
         var totalToPay = (parseFloat(total) - parseFloat(sumaConcept())).toFixed(2);
         $('#Form-relationPayMethodsManagePivotForm-field-PayMethod-pivot-concept').val(totalToPay);
+        $('#Form-relationPayMethodsManagePivotForm-field-PayMethod-pivot-concept').focus();
     });
+
+    $('#Form-relationPayMethodsManagePivotForm-field-PayMethod-pivot-concept').focus();
 
 </script>

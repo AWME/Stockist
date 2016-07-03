@@ -1,0 +1,66 @@
+fields:
+    licence:
+        label: awme.stockist::lang.settings.licence
+        span: left
+        placeholder: awme.stockist::lang.settings.place_licence
+        commentAbove: awme.stockist::lang.settings.above_licence
+        required: true
+    api_key:
+        label: awme.stockist::lang.settings.api_key
+        span: left
+        placeholder: awme.stockist::lang.settings.place_api_key
+        commentAbove: awme.stockist::lang.settings.above_api_key
+        required: true
+
+tabs:
+    fields:
+        default_paymethod:
+            label: Metodo de pago
+            tab: 'General'
+            commentAbove: 'Este pago se utiliza por defecto en caso de no declararlo en su venta, por la totalidad del monto'
+            type: recordfinder
+            list: $/awme/stockist/models/paymethod/columns.yaml
+            prompt: Click en %s para seleccionar un metodo de pago
+            nameFrom: code
+            descriptionFrom: name
+            span: left
+
+        use_scanner:
+            label: Función de Escaner 
+            tab: 'General'
+            comment: 'Activar para habilitar la función de escanner'
+            type: switch
+            span: right
+            default: true
+        use_taxes:
+            label: Impuesto/Descuentos
+            tab: 'General'
+            comment: 'Permitir Imp/Desc en las ventas'
+            type: switch
+            span: right
+            default: true
+        use_print:
+            label: Imprimir
+            tab: 'General'
+            comment: 'Habilitar Impresión de tickets'
+            type: switch
+            span: right
+            default: true
+        use_budget:
+            label: Presupuestar
+            tab: 'General'
+            comment: 'Habilitar guardar ventas como presupuesto'
+            type: switch
+            span: right
+            default: true
+
+        shortcut[button_barcode]:
+            label: 'awme.stockist::lang.sales.products'
+            tab: 'awme.stockist::lang.sales.products'
+            commentAbove: 'awme.stockist::lang.sales.product_list_selected'
+            type: text
+        shortcut[test]:
+            label: 'awme.stockist::lang.sales.products'
+            tab: 'otratab'
+            commentAbove: 'awme.stockist::lang.sales.product_list_selected'
+            type: text

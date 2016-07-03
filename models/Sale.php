@@ -7,6 +7,7 @@ use Request;
 use AWME\Stockist\Classes\Calculator as Calc;
 
 use AWME\Stockist\Models\Sale;
+use AWME\Stockist\Models\Settings;
 use AWME\Stockist\Models\SaleProduct;
 
 /**
@@ -26,6 +27,9 @@ class Sale extends Model
             'between:1,25',
             'unique:awme_stockist_sales'
         ],
+        'dni' => ['digits_between:6,16','numeric'],
+        'phone' => ['digits_between:6,16','numeric'],
+        'email' => ['email'],
     ];
 
     /**

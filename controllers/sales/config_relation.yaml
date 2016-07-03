@@ -18,7 +18,7 @@ pay_methods:
     label: awme.stockist::lang.paymethods.pays
     view:
         list: ~/plugins/awme/stockist/models/salepaymethodpivot/columns.yaml
-        toolbarButtons: add|remove
+        toolbarPartial: relation_paymethods_toolbar
     manage:
         list: ~/plugins/awme/stockist/models/paymethod/columns.yaml
         showSearch: true

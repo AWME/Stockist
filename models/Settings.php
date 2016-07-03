@@ -11,4 +11,11 @@ class Settings extends Model
 
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
+
+    /**
+     * @var array Relations
+     */
+    public $belongsTo = [
+        'default_paymethod'    => ['AWME\Stockist\Models\PayMethod'],
+    ];
 }

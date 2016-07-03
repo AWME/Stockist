@@ -18,6 +18,8 @@ fields:
         type: number
         span: left
         width: 40%
+        attributes:
+            autofocus: autofocus
     total_amount:
         type: partial
         path: pay_methods_total_fare_button

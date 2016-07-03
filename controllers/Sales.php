@@ -5,10 +5,12 @@ use Request;
 use BackendMenu;
 use Backend\Classes\Controller;
 
+use AWME\Stockist\Models\Settings;
 use AWME\Stockist\Models\Sale;
 use AWME\Stockist\Models\Product;
 use AWME\Stockist\Models\SaleProduct;
 use AWME\Stockist\Models\SaleProductPivot;
+use AWME\Stockist\Models\PayMethod;
 
 class Sales extends Controller
 {
@@ -50,6 +52,9 @@ class Sales extends Controller
         $Sale = Sale::find($recordId);
 
         $this->vars['sale'] = $Sale;
+        $this->vars['options']['use_taxes'] = Settings::get('use_taxes');
+        $this->vars['options']['use_scanner'] = Settings::get('use_scanner');
+        $this->vars['options']['default_paymethod'] = PayMethod::find(Settings::get('default_paymethod_id'));
 
         $this->asExtension('FormController')->update($recordId, $context);
     }
@@ -64,7 +69,7 @@ class Sales extends Controller
         $SaleData = Sale::find($recordId);
 
         $this->vars['sale'] = $SaleData;
-
+        $this->vars['options']['use_taxes'] = Settings::get('use_taxes');
         $this->asExtension('FormController')->update($recordId, $context);
 
         #Flash::info(e(trans('awme.stockist::lang.sales.invoice_recalculate')));
