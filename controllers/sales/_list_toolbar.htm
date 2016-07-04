@@ -1,3 +1,16 @@
 <div data-control="toolbar">
-    <button type="button" data-hotkey="ctrl+space" onclick="window.location.href='<?= Backend::url('awme/stockist/sales/create') ?>'" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></button>
+    <button 
+        data-hotkey="ctrl+space" 
+        data-toggle="tooltip"
+        data-placement="right"
+        data-delay="500"
+        data-original-title="<?=trans('awme.stockist::lang.sales.new_sale')?> (Ctrl+Space)"
+
+        class="btn btn-primary oc-icon-plus"
+        type="button" 
+        onclick="window.location.href='<?= Backend::url('awme/stockist/sales/create') ?>'">
+
+        <?=e(trans('awme.stockist::lang.sales.new_sale'))?>
+            
+    </button>
 </div>

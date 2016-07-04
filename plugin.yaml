@@ -7,23 +7,23 @@ plugin:
 navigation:
     stockist:
         label: 'awme.stockist::lang.plugin.name'
-        url: awme/stockist/products
+        url: awme/stockist/sales
         icon: icon-cubes
         permissions:
             - awme.stockist.usage
         sideMenu:
-            stockist-sales:
-                label: 'awme.stockist::lang.sales.menu_label'
-                url: awme/stockist/sales
-                icon: icon-cart-plus
-                permissions:
-                    - awme.stockist.read_sales
             stockist-tills:
                 label: 'awme.stockist::lang.tills.menu_label'
                 url: awme/stockist/tills
                 icon: icon-usd
                 permissions:
                     - awme.stockist.read_tills
+            stockist-sales:
+                label: 'awme.stockist::lang.sales.menu_label'
+                url: awme/stockist/sales
+                icon: icon-cart-plus
+                permissions:
+                    - awme.stockist.read_sales
             stockist-paymethods:
                 label: 'awme.stockist::lang.paymethods.menu_label'
                 url: awme/stockist/paymethods

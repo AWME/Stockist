@@ -3,9 +3,18 @@ modelClass: AWME\Stockist\Models\Sale
 title: awme.stockist::lang.sales.sales
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
-showCheckboxes: true
+showCheckboxes: false
 toolbar:
     buttons: list_toolbar
     search:
         prompt: 'backend::lang.list.search_prompt'
 recordUrl: 'awme/stockist/sales/update/:id'
+# Records to display per page
+recordsPerPage: 30
+# Default sorting column
+defaultSort:
+    column: created_at
+    direction: desc
+
+# Filter widget configuration
+filter: config_filter.yaml

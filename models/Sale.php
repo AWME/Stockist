@@ -3,6 +3,7 @@
 use Flash;
 use Model;
 use Request;
+use BackendAuth;
 
 use AWME\Stockist\Classes\Calculator as Calc;
 
@@ -17,7 +18,13 @@ class Sale extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
+    /**
+     * @var string The database table used by the model.
+     */
+    public $table = 'awme_stockist_sales';
+    
     protected $jsonable = ['tax'];
+    
     /*
      * Validation
      */
@@ -32,14 +39,16 @@ class Sale extends Model
         'email' => ['email'],
     ];
 
-    /**
-     * @var string The database table used by the model.
-     */
-    public $table = 'awme_stockist_sales';
 
     /**
      * @var array Relations
      */
+    public $belongsTo = [
+        'seller' => [
+            'Backend\Models\User',
+            'key' => 'seller_id',
+        ],
+    ];
     public $belongsToMany = [
         'products_pivot_model' => [
             'AWME\Stockist\Models\Product',
@@ -60,12 +69,21 @@ class Sale extends Model
         
     ];
 
+
+/**
+ * ===================================
+ * EVENTS
+ * ===================================
+ *
+ */
+
     public function beforeSave()
     {
         $this->setTaxes();      # Guarda los Sale.tax fields.
         $this->setSubtotal();   # Operación del subtotal de la venta.
         $this->setTotal();      # Operación del total de la venta.
-        #$this->setPaidOut();    # Pago y Cambio
+
+        $this->seller_id = BackendAuth::getUser()->id;
     }
 
     public function afterDelete()
@@ -73,6 +91,18 @@ class Sale extends Model
         SaleProduct::where('sale_id', $this->id)->delete();
     }
 
+
+/**
+ * ===================================
+ * FUNCTIONS
+ * ===================================
+ *
+ */
+    /**
+     * setTaxes()
+     * Aplica el tax attr segun "taxes %/$"
+     * para aplicar al subtotal
+     */
     public function setTaxes()
     {   
         $taxes = Request::input('Sale.tax');
@@ -93,6 +123,13 @@ class Sale extends Model
         $this->subtotal = Calc::suma($sale_prices);
     }
 
+    /**
+     * setTotal()
+     * setea el Total de la venta
+     * Sumatoria y operación final de la venta
+     * 
+     * @return $this->total 
+     */
     public function setTotal()
     {
         $total = $this->subtotal;
@@ -108,11 +145,27 @@ class Sale extends Model
         $this->total = $total;
     }
 
-    public function setPaidOut()
-    {
-        $taxes = $this->tax;
-        $taxes['change'] = ($this->tax['paid_out'] - $this->total);
 
-        $this->tax = $taxes;
+/**
+ * ===================================
+ * SCOPES
+ * ===================================
+ *
+ */
+    public function scopeShowToday($query)
+    {
+        $show = date("Y-m-d");
+        $date = $show.' 00:00:00';
+        return $query->where('created_at','>=', $date);
     }
+
+
+    public function scopeShowDate($query)
+    {
+
+        $show = date("Y-m-d");
+        $date = $show.' 00:00:00';
+        return $query->where('created_at','>=', $date);
+    }
+
 }

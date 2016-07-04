@@ -1,0 +1,4 @@
+columns:
+    id:
+        label: 'awme.stockist::lang.id'
+        type: number

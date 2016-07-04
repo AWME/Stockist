@@ -53,14 +53,3 @@ tabs:
             type: switch
             span: right
             default: true
-
-        shortcut[button_barcode]:
-            label: 'awme.stockist::lang.sales.products'
-            tab: 'awme.stockist::lang.sales.products'
-            commentAbove: 'awme.stockist::lang.sales.product_list_selected'
-            type: text
-        shortcut[test]:
-            label: 'awme.stockist::lang.sales.products'
-            tab: 'otratab'
-            commentAbove: 'awme.stockist::lang.sales.product_list_selected'
-            type: text

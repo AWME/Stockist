@@ -5,7 +5,27 @@
 columns:
     id:
         label: ID
-        invisible: true
+        width: 5%
+    created_at:
+        label: backend::lang.access_log.created_at
+        type: timetense
+        format: 'H:i:s d/m/y'
+        width: 10%
+
+    seller:
+        label: awme.stockist::lang.sales.seller
+        relation: seller
+        select: concat(first_name)
+
+    #products:
+    #    label: awme.stockist::lang.sales.seller
+    #    relation: products_pivot_model
+    #    select: concat(name)
+
+    status:
+        label: awme.stockist::lang.invoice.status
+        width: 8%
+
     fullname:
         label: awme.stockist::lang.invoice.fullname
         searchable: true
@@ -14,15 +34,12 @@ columns:
         searchable: true
     description:
         label: awme.stockist::lang.invoice.description
+        searchable: true
     subtotal:
         label: awme.stockist::lang.sales.subtotal
     total:
         label: awme.stockist::lang.sales.total    
-    payment:
-        label: awme.stockist::lang.invoice.payment
-    status:
-        label: awme.stockist::lang.invoice.status
-
-    created_at:
-        label: Date Created
-        type: datetime
+    paymethods:
+        label: awme.stockist::lang.invoice.pay_methods
+        relation: pay_methods
+        select: concat(code)

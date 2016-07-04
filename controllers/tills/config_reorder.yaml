@@ -1,0 +1,4 @@
+title: Tills
+modelClass: AWME\Stockist\Models\Till
+toolbar:
+    buttons: reorder_toolbar

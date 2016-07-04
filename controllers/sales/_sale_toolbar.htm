@@ -10,7 +10,7 @@
             id="Sale-Save"
             type="submit"
             data-request="onSave"
-            data-request-data="redirect:0"
+            data-request-data="redirect:<?= (int) $isCreate ?>"
             data-load-indicator="<?=trans('backend::lang.form.save')?> <?=trans('awme.stockist::lang.sales.sale')?>..."
             class="btn btn-primary oc-icon-check save"
 

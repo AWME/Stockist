@@ -7,13 +7,13 @@ fields:
         label: awme.stockist::lang.invoice.fullname
         span: left
         placeholder: awme.stockist::lang.invoice.fullname
-        required: true
+        attributes:
+            autofocus: autofocus
 
     invoice:
         label: awme.stockist::lang.invoice.invoice
         span: right
         placeholder: awme.stockist::lang.invoice.invoice_number
-        required: true
 
     toolbar:
         type: partial

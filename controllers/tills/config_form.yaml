@@ -1,0 +1,10 @@
+name: Tills
+form: $/awme/stockist/models/till/fields.yaml
+modelClass: AWME\Stockist\Models\Till
+defaultRedirect: awme/stockist/tills
+create:
+    redirect: 'awme/stockist/tills/update/:id'
+    redirectClose: awme/stockist/tills
+update:
+    redirect: awme/stockist/tills
+    redirectClose: awme/stockist/tills
