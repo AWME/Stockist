@@ -1,4 +1,33 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
 columns:
     id:
-        label: 'awme.stockist::lang.id'
-        type: number
+        label: ID
+        invisible: true
+    
+    created_at:
+        label: backend::lang.access_log.created_at
+        type: timetense
+        format: 'H:i:s d/m/y'
+        width: 10%
+
+    operation:
+        label: awme.stockist::lang.tills.operation
+        invisible: true
+
+    concept:
+        label: awme.stockist::lang.paymethods.concept
+
+    seller:
+        label: awme.stockist::lang.sales.seller
+        relation: seller
+        select: concat(first_name)
+    
+    description:
+        label: awme.stockist::lang.tills.description
+        searchable: true
+
+    amount:
+        label: awme.stockist::lang.tills.amount

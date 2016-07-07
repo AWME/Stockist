@@ -1,44 +1,44 @@
 <button
     type="button"
     data-request="onCheckin"
-    data-request-confirm="<?=e(trans('awme.stocketist::lang.sales.confirm_closed_sale'))?>"
+    data-request-confirm="<?=e(trans('awme.stockist::lang.sales.confirm_closed_sale'))?>"
     data-hotkey="F3"
-    class="btn btn-lg btn-success oc-icon-money invoice-checkin"
+    class="btn btn-lg btn-primary oc-icon-money invoice-checkin"
 
     data-toggle="tooltip"
     data-placement="top"
     data-delay="500"
-    data-original-title="Emitir compra (F3)"
+    data-original-title="<?= trans('awme.stockist::lang.invoice.generate_bill'); ?> (F3)"
     >
-    Emitir
+    <?= trans('awme.stockist::lang.invoice.generate_bill_button'); ?>
 </button>
 
 <button
     type="button"
-    data-request="onCheckin"
-    data-request-confirm="<?=e(trans('awme.stocketist::lang.sales.confirm_closed_sale'))?>"
+    data-request="onPreview"
+    data-request-confirm="<?=e(trans('awme.stockist::lang.invoice.confirm_preview'))?>"
     data-hotkey="F4"
-    class="btn btn-lg btn-primary oc-icon-print invoice-checkin"
-
+    class="btn btn-lg btn-info oc-icon-print invoice-checkin"
+    
     data-toggle="tooltip"
     data-placement="top"
     data-delay="500"
-    data-original-title="Imprimir comprobante (F4)"
+    data-original-title="<?= trans('awme.stockist::lang.invoice.invoice_preview'); ?> (F4)"
     >
-    Imprimir
+    <?= trans('awme.stockist::lang.invoice.invoice_preview'); ?>
 </button>
 
 <button
     type="button"
     data-request="onCheckin"
-    data-request-confirm="<?=e(trans('awme.stocketist::lang.sales.confirm_closed_sale'))?>"
+    data-request-confirm="<?=e(trans('awme.stockist::lang.sales.confirm_closed_sale'))?>"
     data-hotkey="F5"
     class="btn btn-lg btn-warning oc-icon-file invoice-checkin"
 
     data-toggle="tooltip"
     data-placement="top"
     data-delay="500"
-    data-original-title="Emitir presupuesto (F5)"
+    data-original-title="<?= trans('awme.stockist::lang.invoice.budget'); ?> (F5)"
     >
-    Presupuestar
+    <?= trans('awme.stockist::lang.invoice.budget'); ?>
 </button>

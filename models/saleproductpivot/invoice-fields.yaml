@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    product_info:
+      type: partial
+      path: relation_products_sales_info
+    pivot[quantity]:
+        label: Cantidad
+        span: auto
+        disabled: true
+        default: 1
+    pivot[price]:
+        label: Precio de Venta
+        span: auto
+        defaultFrom: price_sale
+        disabled: true
+#    pivot[subtotal]:
+#        label: Subtotal 
+#        span: auto
+#        context: update
+

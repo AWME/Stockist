@@ -22,8 +22,7 @@ class CreateSalesTable extends Migration
             $table->decimal('subtotal', 10, 2)->default(0)->nullable();
             $table->decimal('total', 10, 2)->default(0)->nullable();
 
-            $table->string('payment')->default('cash');
-            $table->string('status')->default('open');
+            $table->string('status')->default('open');          # (open, closed ,senate, pause, budget, canceled)
 
             /**
              * Facturación

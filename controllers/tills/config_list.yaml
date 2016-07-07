@@ -3,7 +3,7 @@ modelClass: AWME\Stockist\Models\Till
 title: Tills
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
-showCheckboxes: true
+showCheckboxes: false
 toolbar:
     buttons: list_toolbar
     search:

@@ -1,5 +1,6 @@
 <?php namespace AWME\Stockist\Controllers;
 
+use Schema;
 use Backend\Classes\Controller;
 use BackendMenu;
 

@@ -1,0 +1,98 @@
+<style type="text/css" media="screen, print">
+.invoice-company-details,.invoice-company-name,.invoice-header-date,.invoice-header-number{text-align:right}a,a:hover{text-decoration:none;color:#0862A2;font-weight:700}table,td,th,tr{padding:0;margin:0}.responsiv-pay-invoice{min-width:680px}.invoice-table{width:100%;border-collapse:collapse}.invoice-header{border-bottom:2px solid #ededed}.invoice-header td{padding-top:20px;padding-bottom:20px}.invoice-header-number{color:#555;font-size:38px}.invoice-header-date{color:#999;font-size:21px}.invoice-details td{vertical-align:top;padding-top:20px;width:50%}.invoice-details td.invoice-company-row{width:40%}.invoice-company{background-color:#f5f5f5;border:2px solid #e3e3e3;padding:20px;float:right}.invoice-client-label,.invoice-company-name{font-weight:700;padding-bottom:5px}.invoice-items th{border-bottom:3px solid #ddd;padding:10px 5px}.invoice-items td{padding-left:5px;padding-right:5px}.invoice-item{padding-top:5px;padding-bottom:5px;border-bottom:1px solid #ddd}.invoice-item-quantity{width:50px;text-align:right}.invoice-item-description{text-align:left}.invoice-item-price,.invoice-item-tax,.invoice-item-total,.invoice-payment-advice,.invoice-payment-label{text-align:right}.invoice-end-amount,.invoice-end-label{text-align:right;padding-top:5px;padding-bottom:5px}.invoice-subtotal-amount,.invoice-subtotal-label{padding-top:20px}.invoice-total-amount,.invoice-total-label{padding-top:10px;padding-bottom:10px;border-top:3px solid #ddd;font-weight:700}.invoice-footer{border-top:2px solid #ededed}.invoice-footer td{vertical-align:top;padding-top:20px;width:50%}.invoice-due-date,.invoice-payment-label{font-size:20px;color:#555;padding-bottom:5px}
+.totals-invoice{width: 40% !important;}
+.invoice-logo{max-width:200px !important;}
+</style>
+    
+    
+
+<div id="InvoiceBill" class="responsiv-pay-invoice">
+    <table class="invoice-table invoice-header">
+        <tbody><tr>
+            <td>
+                <?if($options['company_logo']):?>
+                    <img src="/storage/app/media<?=$options['company_logo']?>" alt="" class="invoice-logo">
+                <?endif;?>
+            </td>
+            <td>
+                <div class="invoice-header-number"><?=e(trans('awme.stockist::lang.sales.sale'));?> 
+                #<?= $formModel->id ?>
+                </div>
+                <div class="invoice-header-date"><?=date('d/m/Y',time())?></div>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <table class="invoice-table invoice-details">
+        <tbody><tr>
+            <td class="invoice-client-row">
+                <div class="invoice-client-label">
+                    <h3><?=e(trans('awme.stockist::lang.invoice.client'));?></h3>
+                </div>
+                <div class="invoice-client-details">
+                <strong><?= $formModel->fullname ?></strong><br>
+                <strong><?= $formModel->dni ?></strong><br>
+                <?= $formModel->address ?> <br><?= $formModel->city ?> <?= $formModel->state ?> <?= $formModel->country ?>
+
+                </div>
+            </td>
+            <td class="invoice-company-row">
+                <div class="invoice-company">
+                    <div class="invoice-company-name">
+                        <?if($options['show_seller']):?>
+                            <?=e(trans('awme.stockist::lang.invoice.seller'));?><br>
+                            <span style="font-weight: normal;"><?=$formModel->seller->fullname?></span><br>
+                        <?endif;?>
+                        <strong><?=e($options['company_name'])?></strong>
+                    </div>
+                    <div class="invoice-company-details">
+                        <?=e($options['company_slogan'])?><br>
+                        <?=e($options['company_address'])?><br>
+                        <?=e(trans("awme.stockist::lang.invoice.tel"))?>: <?=e($options['company_phone'])?>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <br><br>
+    <?=$this->relationRender('invoice_products')?>
+
+    <table width="40%" class="totals-invoice invoice-table invoice-items pull-right">
+        <tbody>
+            <tr>
+                <td colspan="4" class="invoice-end-label invoice-subtotal-label"><?= e(trans('awme.stockist::lang.invoice.subtotal')) ?></td>
+                <td class="invoice-end-amount invoice-subtotal-amount">$<?= $formModel->subtotal ?></td>
+            </tr>
+            <?php if($formModel->tax['amount']):?>
+            <tr>
+                <td colspan="4" class="invoice-end-label invoice-tax-label"><?= e(trans('awme.stockist::lang.paymethods.tax_type')) ?></td>
+                <td class="invoice-end-amount invoice-tax-amount"><?= $formModel->tax['type'].$formModel->tax['amount'] ?></td>
+            </tr>
+            <?endif;?>
+            <tr>
+                <td colspan="3">&nbsp;</td>
+                <td class="invoice-end-label invoice-total-label"><?= e(trans('awme.stockist::lang.invoice.total')) ?></td>
+                <td class="invoice-end-amount invoice-total-amount">$<?= $formModel->total ?></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <table class="invoice-table invoice-footer">
+        <tbody><tr>
+            <td>
+                <div class="invoice-due-date"><?=e($options['thank_you_message'])?></div>
+                <div class="invoice-thanks"><?=e($options['bottom_left_message'])?></div>
+            </td>
+            <td>
+                                            <div class="invoice-payment-label"><?=e($options['not_valid_message'])?></div>
+                    <div class="invoice-payment-advice">
+                        <?=e($options['bottom_right_message'])?>
+                    </div>
+                                    </td>
+        </tr>
+    </tbody></table>
+</div>
+

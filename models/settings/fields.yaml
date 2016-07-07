@@ -15,41 +15,111 @@ fields:
 tabs:
     fields:
         default_paymethod:
-            label: Metodo de pago
-            tab: 'General'
-            commentAbove: 'Este pago se utiliza por defecto en caso de no declararlo en su venta, por la totalidad del monto'
+            label: awme.stockist::lang.paymethods.menu_label
+            tab: 'awme.stockist::lang.settings.general_tab'
+            commentAbove: 'awme.stockist::lang.settings.default_paymethod_above'
             type: recordfinder
             list: $/awme/stockist/models/paymethod/columns.yaml
-            prompt: Click en %s para seleccionar un metodo de pago
+            prompt: awme.stockist::lang.settings.default_paymethod_promp
             nameFrom: code
             descriptionFrom: name
             span: left
 
         use_scanner:
-            label: Función de Escaner 
-            tab: 'General'
-            comment: 'Activar para habilitar la función de escanner'
+            label: awme.stockist::lang.settings.use_scanner
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.use_scanner_comment'
             type: switch
             span: right
             default: true
         use_taxes:
-            label: Impuesto/Descuentos
-            tab: 'General'
-            comment: 'Permitir Imp/Desc en las ventas'
+            label: awme.stockist::lang.settings.use_manual_taxes
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.use_manual_taxes_comment'
             type: switch
             span: right
             default: true
         use_print:
-            label: Imprimir
-            tab: 'General'
-            comment: 'Habilitar Impresión de tickets'
+            label: awme.stockist::lang.settings.use_print
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: awme.stockist::lang.settings.use_print_comment
+            type: switch
+            span: right
+            default: true
+        invoice_show_seller:
+            label: awme.stockist::lang.settings.show_seller
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.show_seller_comment'
             type: switch
             span: right
             default: true
         use_budget:
-            label: Presupuestar
-            tab: 'General'
-            comment: 'Habilitar guardar ventas como presupuesto'
+            label: awme.stockist::lang.settings.use_budget
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.use_budget_comment'
             type: switch
             span: right
             default: true
+
+
+
+        company_name:
+            label: awme.stockist::lang.settings.company_name
+            tab: "awme.stockist::lang.settings.company_tab"
+            commentAbove: 'awme.stockist::lang.settings.show_in_invoice'
+            span: left
+            placeholder: 'awme.stockist::lang.settings.our_company'
+            required: true
+
+        company_logo:
+            label: awme.stockist::lang.settings.company_logo
+            tab: "awme.stockist::lang.settings.company_tab"
+            type: mediafinder
+            mode: image
+            span: right
+            imageHeight: 260
+            imageWidth: 260
+
+        company_slogan:
+            label: awme.stockist::lang.settings.slogan_company
+            commentAbove: 'awme.stockist::lang.settings.show_in_invoice'
+            span: left
+            tab: "awme.stockist::lang.settings.company_tab"
+            placeholder: awme.stockist::lang.settings.our_company_slogan
+
+        company_address:
+            label: awme.stockist::lang.settings.company_address
+            tab: "awme.stockist::lang.settings.company_tab"
+            span: left
+            placeholder: "My address 123, City, State"
+
+        company_phone:
+            label: awme.stockist::lang.settings.company_phone
+            tab: "awme.stockist::lang.settings.company_tab"
+            span: left
+            placeholder: "(351) 000-0001"
+
+        thank_you_message:
+            label: awme.stockist::lang.settings.thank_you_message
+            tab: "awme.stockist::lang.settings.company_tab"
+            span: left
+            placeholder: "awme.stockist::lang.settings.holder_thank_you_message"
+            commentAbove: "awme.stockist::lang.settings.left_bottom_message"
+        bottom_left_message:
+            label: awme.stockist::lang.settings.bottom_left_message
+            tab: "awme.stockist::lang.settings.company_tab"
+            span: left
+            placeholder: "awme.stockist::lang.settings.holder_left_message"
+            commentAbove: "awme.stockist::lang.settings.left_bottom_message"
+        not_valid_message:
+            label: awme.stockist::lang.settings.not_valid_message
+            tab: "awme.stockist::lang.settings.company_tab"
+            span: left
+            placeholder: "awme.stockist::lang.settings.holder_not_valid"
+            commentAbove: "awme.stockist::lang.settings.right_bottom_message"
+        bottom_right_message:
+            label: awme.stockist::lang.settings.bottom_right_message
+            tab: "awme.stockist::lang.settings.company_tab"
+            placeholder: "awme.stockist::lang.settings.holder_right_message"
+            span: left
+            commentAbove: "awme.stockist::lang.settings.right_bottom_message"

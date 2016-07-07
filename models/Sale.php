@@ -7,7 +7,7 @@ use BackendAuth;
 
 use AWME\Stockist\Classes\Calculator as Calc;
 
-use AWME\Stockist\Models\Sale;
+use AWME\Stockist\Models\Till;
 use AWME\Stockist\Models\Settings;
 use AWME\Stockist\Models\SaleProduct;
 
@@ -58,7 +58,23 @@ class Sale extends Model
             'timestamps' => true,
             'pivotModel' => 'AWME\Stockist\Models\SaleProductPivot',
         ],
+        'invoice_products' => [
+            'AWME\Stockist\Models\Product',
+            'table' => 'awme_stockist_sales_products',
+            'key'   => 'sale_id',
+            'pivot' => ['quantity','price','subtotal'],
+            'timestamps' => true,
+            'pivotModel' => 'AWME\Stockist\Models\SaleProductPivot',
+        ],
         'pay_methods' => [
+            'AWME\Stockist\Models\PayMethod',
+            'table' => 'awme_stockist_sales_pay_methods',
+            'key'   => 'sale_id',
+            'pivot' => ['concept','total'],
+            'timestamps' => true,
+            'pivotModel' => 'AWME\Stockist\Models\SalePayMethodPivot',
+        ],
+        'invoice_pay_methods' => [
             'AWME\Stockist\Models\PayMethod',
             'table' => 'awme_stockist_sales_pay_methods',
             'key'   => 'sale_id',
@@ -143,6 +159,59 @@ class Sale extends Model
         }
 
         $this->total = $total;
+    }
+
+
+
+
+    /**
+     * putPaysOnTill
+     * Crea en la caja los montos abonados
+     * usando los paymethods utilizados.
+     * 
+     */
+    public function putPaysOnTill()
+    {
+
+        foreach ($this->pay_methods as $key => $value) {
+            
+            $Till = new Till;
+            $Till->operation    = 'deposit';
+            $Till->concept      = 'sale_payment';
+
+            $shortsale = trans('awme.stockist::lang.sales.shortsale');
+            $Till->description  = $value['code'].' '.$shortsale.': '.$this->invoice;
+
+            $Till->record_data  = $value;
+            $Till->amount       = $value['pivot']['total'];
+            $Till->save();
+        }
+        
+    }
+
+    /**
+     * checkIn
+     * Mete los pagos en caja
+     * Cierra la venta
+     */
+    public function checkIn()
+    {
+        $this->putPaysOnTill();
+
+        $this->status = 'closed';
+    }
+
+    /**
+     * getTotalPaid
+     * Obtener el pago total abonado
+     * de los metodos y montos aplicados a la venta
+     * @return int total
+     */
+    public function getTotalPaid()
+    {   
+        $totals = SalePayMethod::where('sale_id', $this->id)->get()->pluck('concept')->toArray();        
+        $total = array_sum($totals);
+        return number_format($total, 2, '.', '');
     }
 
 

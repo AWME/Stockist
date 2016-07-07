@@ -18,13 +18,12 @@ class CreateTillsTable extends Migration
              */
             $table->enum('operation', ['deposit', 'withdraw']);     # Tipo de operación (Ingreso o Retiro de dinero) 
             $table->string('concept');                              # Concepto de operación (Nueva Venta, Ingreso de Cambio, Gasto)
-            $table->integer('model')->nullable();                   # Model (Sale, Expense)
-            $table->integer('model_id')->nullable();                # Record Id
+            $table->longText('description')->nullable();            # Descripción de movimiento
+            
+            $table->longText('record_data')->nullable();            # Controller, Model, RecordId etc.
 
-            $table->integer('payment_id')->nullable();              # Metodo de pago (Model PayMethod) 
             $table->decimal('amount', 10, 2);                       # Monto ingresado o retirado
 
-            $table->longText('description')->nullable();
 
             $table->timestamps();
         });
