@@ -40,7 +40,7 @@
         </button>
 
         <?php if (!$isCreate): ?>
-            <?php if($model->status != 'closed'): ?>
+            <?php if($this->isStatus($formModel->status, ['open','pause','budget'])):?>
                 <button
                     type="button"
                     class="btn btn-default empty oc-icon-trash-o"

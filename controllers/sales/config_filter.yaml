@@ -17,10 +17,7 @@ scopes:
     status:
         label: awme.stockist::lang.filters.status
         type: group
+        modelClass: AWME\Stockist\Models\Sale
         conditions: status in (:filtered)
-        options:
-            open: 'Abierta'
-            senate: 'Señada'
-            pause: 'Pausada'
-            closed: 'Cerrada'
+        options: listFilterStatus
 

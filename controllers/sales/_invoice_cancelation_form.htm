@@ -1,0 +1,49 @@
+<?php if($true = true):?>
+<div class="modal-dialog">
+    <div class="modal-content">
+    
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><?=trans("awme.stockist::lang.invoice.status_to_canceled")?></h4>
+        </div>
+        <?= Form::open(['class'=>'form-elements', 'id'=>'closedCancelation']) ?>
+            <div class="modal-body">
+
+                <div class="layout-row">
+                    <!-- Checkbox List -->
+                    <div class="form-group checkboxlist-field is-required">
+                        <label><?=trans('awme.stockist::lang.invoice.cancelation_options')?></label>
+                        <p class="help-block before-field"><?=trans('awme.stockist::lang.invoice.cancelation_above')?></p>
+
+                        <div class="checkbox custom-checkbox">
+                            <input checked="checked" id="checkbox-example2" name="invoice_repayment" value="1" type="checkbox">
+                            <label class="choice" for="checkbox-example2"> <?=trans('awme.stockist::lang.invoice.cancelation_label_withdraw')?></label>
+                            <p class="help-block"><?=trans('awme.stockist::lang.invoice.cancelation_above_withdraw')?></p>
+                        </div>
+                        <?if($this->isStatus($sale->status, ['closed'])):?>
+                            <div class="checkbox custom-checkbox">
+                                <input id="checkbox-example1" name="invoice_restock" value="1" type="checkbox">
+                                <label class="choice" for="checkbox-example1"> <?=trans('awme.stockist::lang.invoice.cancelation_label_stock')?></label>
+                                <p class="help-block"><?=trans('awme.stockist::lang.invoice.cancelation_above_stock')?></p>
+                            </div>
+                        <?endif;?>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                    <button type="button" id="modal-scanner-close" class="btn btn-default" data-dismiss="modal"><?= e(trans('backend::lang.form.close')) ?></button>
+                    <button
+                        type="button"
+                        id="onSaleCancel"
+                        data-request="onChangeStatus"
+                        data-request-data="invoice_status: 'canceled'"
+                        class="btn btn-primary">
+                        OK
+                    </button>
+            </div>
+        <?= Form::close() ?>
+    </div>
+</div>
+
+<?endif;?>

@@ -1,3 +1,8 @@
+
+.loading-indicator {
+    margin-top: -5px !important;
+}
+
 .form-group.half-width {
     width: 24.25%;
 }
@@ -119,4 +124,5 @@ button.invoice-checkout.btn-lg.btn-success.oc-icon-shopping-cart {
     border-style: none;
     height: 50px;
 }
+
 

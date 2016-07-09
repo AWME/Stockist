@@ -11,6 +11,11 @@ columns:
         type: timetense
         format: 'H:i:s d/m/y'
         width: 10%
+    updated_at:
+        label: awme.stockist::lang.invoice.updated_at
+        type: timesince
+        format: 'H:i:s d/m/y'
+        width: 10%
 
     seller:
         label: awme.stockist::lang.sales.seller

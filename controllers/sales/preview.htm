@@ -17,7 +17,7 @@
             <?php if ($formModel->status): ?>
                 <div class="scoreboard-item title-value">
                     <h4><?=e(trans('awme.stockist::lang.invoice.status'));?></h4>
-                    <p><?= trans('awme.stockist::lang.invoice.sale_'.$formModel->status) ?></p>
+                    <p><?= trans('awme.stockist::lang.invoice.status_'.$formModel->status) ?></p>
                     <p class="description"><?=e(trans('backend::lang.import_export.updated'));?>: <?= $formModel->updated_at->toFormattedDateString('timesince') ?></p>
                 </div>
             <?php endif ?>
@@ -36,37 +36,7 @@
         </div>
     </div>
 
-    <div class="form-buttons buttons-offset">
-        <div class="loading-indicator-container">
-            <?php if($formModel->status != 'closed'):?>
-                <a
-                    href="<?= Backend::url('awme/stockist/sales/update/'.$formModel->id) ?>"
-                    class="btn btn-sm btn-primary icon oc-icon-arrow-left pull-left">
-                    <?=e(trans('awme.stockist::lang.sales.edit_sale'));?>
-                </a>
-
-            <?endif;?>
-            <?php if($options['allow_print']):?>
-                <a
-                    href="javascript:;" 
-                    id="printInvoice"
-                    class="btn btn-sm btn-default icon oc-icon-print pull-left">
-                    <?=e(trans('awme.stockist::lang.invoice.print'));?>
-                </a>
-            <?endif;?>
-            <div class="dropdown pull-left">
-                <a href="#" data-toggle="dropdown" class="btn btn-primary oc-icon-plus">Estado de Venta</a>
-
-                <ul class="dropdown-menu" role="menu" data-dropdown-title="Add something small">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="oc-icon-circle-o-notch">Venta abierta</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="oc-icon-pause">Venta pausada</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="oc-icon-gavel">Venta señada</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="oc-icon-file-excel-o">Presupuesto</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="oc-icon-times">Cancelar</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?=$this->makePartial('invoice_toolbar')?>
 
     <div class="control-tabs content-tabs tabs-offset" data-control="tab">
         <ul class="nav nav-tabs">

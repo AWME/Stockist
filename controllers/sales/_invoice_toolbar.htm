@@ -1,0 +1,128 @@
+<div class="form-buttons buttons-offset">
+        <div class="loading-indicator-container">
+            <?php if(!$this->isStatus($formModel->status, ['closed','canceled'])):?>
+                <a
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    data-delay="500"
+                    data-original-title="<?=e(trans('awme.stockist::lang.sales.edit_sale'));?>"
+                    href="<?= Backend::url('awme/stockist/sales/update/'.$formModel->id) ?>"
+                    class="btn btn-sm btn-default icon oc-icon-arrow-left pull-left"
+                    ></a>
+            <?endif;?>
+            
+
+            <div class="dropdown pull-left" data-toggle="tooltip"
+                    data-placement="top"
+                    data-delay="500"
+                    data-original-title="<?=e(trans('awme.stockist::lang.invoice.change_status'));?>">
+	            <a href="#" data-toggle="dropdown" class="btn btn-sm btn-primary oc-icon-tags" ><?=e(trans('awme.stockist::lang.invoice.tag_'.$formModel->status))?></a>
+
+	            <ul class="dropdown-menu" role="menu" data-dropdown-title="Add something small">
+	                <?php if($show = false):?>
+                    <li role="presentation">
+                        <a  type="button" data-request="onChangeStatus" role="menuitem" tabindex="-1" href="#" class="oc-icon-circle-o-notch"
+                         data-request-confirm="<?=trans('awme.stockist::lang.invoice.status_confirm')?>" 
+                         data-request-data="invoice_status: 'open'"><?=e(trans('awme.stockist::lang.invoice.status_to_open'))?></a>
+                    </li> 
+                    <?endif?>
+                    
+                    <!-- Status pause-->
+                    <?php if($this->isStatus($formModel->status, ['open'])):?>
+                    <li role="presentation">
+                        <a  type="button" data-request="onChangeStatus" role="menuitem" tabindex="-1" href="#" class="oc-icon-pause"
+                         data-request-confirm="<?=trans('awme.stockist::lang.messages.confirm_sale_to_pause')?>" 
+                         data-request-data="invoice_status: 'pause'"><?=e(trans('awme.stockist::lang.invoice.status_to_pause'))?></a>
+                    </li>
+                    <?endif;?>
+                    
+                    <!-- Status budget-->
+                    <?php if($this->isStatus($formModel->status, ['open','pause'])):?>
+                    <li role="presentation">
+                        <a  type="button" data-request="onChangeStatus" role="menuitem" tabindex="-1" href="#" class="oc-icon-file-excel-o"
+                         data-request-confirm="<?=e(trans('awme.stockist::lang.messages.confirm_sale_to_budget'))?>"
+                         data-request-data="invoice_status: 'budget'"><?=e(trans('awme.stockist::lang.invoice.status_to_budget'))?></a>
+                    </li>
+                    <?endif;?>
+                    
+                    <!-- Status senate-->
+                    <?php if($this->isStatus($formModel->status, ['open','pause','budget',])):?>
+                    <li role="presentation">
+                        <a  type="button" data-request="onChangeStatus" role="menuitem" tabindex="-1" href="#" class="oc-icon-gavel"
+                         data-request-confirm="<?=trans('awme.stockist::lang.messages.confirm_sale_to_senate')?>" 
+                         data-request-data="invoice_status: 'senate'"><?=e(trans('awme.stockist::lang.invoice.status_to_senate'))?></a>
+                    </li>
+                    <?endif;?>
+                    
+                    <!-- Status confirm-->
+                    <?php if($this->isStatus($formModel->status, ['open','pause','budget','senate'])):?>
+                    <li role="presentation">
+                        <a  type="button" data-request="onCheckin" role="menuitem" tabindex="-1" href="#" class="oc-icon-check"
+                         data-request-confirm="<?=e(trans('awme.stockist::lang.sales.confirm_closed_sale'))?>"
+                         data-request-data="invoice_status: 'canceled'"><?=e(trans('awme.stockist::lang.invoice.status_to_closed'))?></a>
+                    </li>
+                    <?endif;?>
+
+                    <!-- Go Links-->
+                    <?php if($this->isStatus($formModel->status, ['closed','canceled'])):?>
+                        <li role="presentation">
+                            <a  type="button" href="<?=Backend::url('awme/stockist/sales')?>" role="menuitem" tabindex="-1" class="oc-icon-shopping-cart"
+                             "><?=e(trans('awme.stockist::lang.invoice.go_sales'))?></a>
+                        </li>
+                        <li role="presentation">
+                            <a  type="button" href="<?=Backend::url('awme/stockist/tills')?>" role="menuitem" tabindex="-1" class="oc-icon-usd"
+                             "><?=e(trans('awme.stockist::lang.invoice.go_tills'))?></a>
+                        </li>
+                    <?endif;?>
+
+                    <!-- Status canceled-->
+                    <?php if($this->isStatus($formModel->status, ['senate','closed'])):?>
+                    <li role="presentation">
+                        <a  type="button" 
+                            tabindex="-1" class="oc-icon-times"
+
+                            data-control="popup"
+                            data-handler="onCancelSale"
+                            href="javascript:;"><?=e(trans('awme.stockist::lang.invoice.status_to_canceled'))?></a>
+                    </li>
+                    <?endif;?>
+
+
+
+	            </ul>
+	        </div>
+
+            <?php if(!$this->isStatus($formModel->status, ['closed','canceled'])):?>
+                <button
+                    type="button"
+                    data-request="onCheckin"
+                    data-request-confirm="<?=e(trans('awme.stockist::lang.sales.confirm_closed_sale'))?>"
+                    data-hotkey="F3"
+                    class="btn btn-sm btn-success oc-icon-money invoice-checkin pull-left"
+
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    data-delay="500"
+                    data-original-title="<?= trans('awme.stockist::lang.invoice.generate_bill'); ?> (F3)"
+                    >
+                    <?= trans('awme.stockist::lang.invoice.generate_bill_button'); ?>
+                </button>
+            <?endif;?>
+
+            <?php if($options['allow_print']):?>
+                <button
+                    href="javascript:;" 
+                    id="printInvoice"
+                    class="btn btn-sm btn-default icon oc-icon-print pull-left"
+                    data-hotkey="F4"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    data-delay="500"
+                    data-original-title="<?= trans('awme.stockist::lang.invoice.print_title'); ?> (F4)">
+                    <?=e(trans('awme.stockist::lang.invoice.print'));?>
+                </button>
+            <?endif;?>
+
+
+        </div>
+    </div>

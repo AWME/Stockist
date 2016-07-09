@@ -15,7 +15,7 @@
                 <?endif;?>
             </td>
             <td>
-                <div class="invoice-header-number"><?=e(trans('awme.stockist::lang.sales.sale'));?> 
+                <div class="invoice-header-number"><?=e(trans('awme.stockist::lang.invoice.tag_'.$formModel->status));?> 
                 #<?= $formModel->id ?>
                 </div>
                 <div class="invoice-header-date"><?=date('d/m/Y',time())?></div>
