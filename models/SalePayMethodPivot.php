@@ -25,27 +25,22 @@ class SalePayMethodPivot extends Pivot
     public function beforeSave()
     {
 
-        /**
-         * Set Product Subtotal
-         */
+        #Total a cobrar
         $this->setTotalCharge();
     }
 
     /**
-     * setProductSubtotal()
-     * Aplica el subtotal al producto
-     * Operación ($price * $quantity)
+     * setTotalCharge
+     * =============================
+     * Aplicar el total a cobrar
+     * Según los metodos de pago y sus taxes
      */
     public function setTotalCharge()
     {
-         /**
-         * $price (pivot)
-         * $price_sale (product)
-         * @var integer #Precio de venta.
-         */
+        
         $PayMethod = PayMethod::find($this->pay_method_id);
 
-       	$payConcept = $this->concept;
+        $payConcept = $this->concept;
 
         if($PayMethod->tax_type == "$"){
             
@@ -55,6 +50,7 @@ class SalePayMethodPivot extends Pivot
             $total = Calc::suma([$payConcept, Calc::percent($PayMethod->tax_amount, $payConcept)]); 
         }else $total = $payConcept;
 
+        $this->taxes = $PayMethod->tax_type.$PayMethod->tax_amount;
         $this->total = $total;
     }
 }

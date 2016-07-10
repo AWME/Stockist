@@ -17,6 +17,8 @@ class CreateSalesPayMethodsTable extends Migration
             $table->integer('pay_method_id');
             $table->index(['sale_id', 'pay_method_id']);
 
+            $table->string('taxes');                            # tipo Recargo/Descuento (%,$)
+
             $table->decimal('concept', 10, 2)->nullable();      # Concepto de pago por total
             $table->decimal('total', 10, 2)->nullable();        # Total, según los taxes del paymethod
 

@@ -1,5 +1,7 @@
 <?php namespace AWME\Stockist\Controllers;
 
+use Schema;
+
 use Flash;
 use Request;
 use Backend;
@@ -49,6 +51,11 @@ class Sales extends Controller
         $this->addJs($this->assetsPath.'/js/print-this.js');
     }
 
+    public function schemas()
+    {
+        
+
+    }
 
     /**
      * Update
@@ -57,8 +64,9 @@ class Sales extends Controller
     {
         $Sale = Sale::find($recordId);
 
-        if($this->isStatus($Sale->status, ['closed','canceled'])) 
-            return Redirect::to(Backend::url('awme/stockist/sales/preview/'.$recordId));
+        if($Sale)
+            if($this->isStatus($Sale->status, ['closed','canceled'])) 
+                return Redirect::to(Backend::url('awme/stockist/sales/preview/'.$recordId));
 
         $this->vars['sale'] = $Sale;
         $this->vars['options']['use_taxes'] = Settings::get('use_taxes');

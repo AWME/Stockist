@@ -13,9 +13,11 @@ columns:
         label: awme.stockist::lang.paymethods.concept
         width: 15%
         cssClass: 'payConcept'
-    taxes:
+
+    pivot[taxes]:
         label: 'awme.stockist::lang.paymethods.tax_type'
-        select: concat(tax_type, ' ', tax_amount)
+        type: text
+
     pivot[total]:
         label: awme.stockist::lang.paymethods.charge
         width: 15%

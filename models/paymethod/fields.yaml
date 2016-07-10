@@ -9,10 +9,8 @@ fields:
         label: 'awme.stockist::lang.paymethods.code'
         span: right
         required: true
-        preset:
-            field: name
-            type: slug
         type: text
+        placeholder: USD
         attributes:
             maxlength: '8'
     description:

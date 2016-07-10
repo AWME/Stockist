@@ -49,7 +49,14 @@
     <div class="checkbox custom-checkbox">
         <input id="dfpaymethod" name="df_paymethod" value="enabled" type="checkbox" <?= (AWME\Stockist\Models\Settings::get('use_auto_payment')) ? 'checked="checked"':''?> disabled="disabled">
         <label class="choice" for="dfpaymethod"> <?=trans('awme.stockist::lang.settings.use_default_paymethod_enable')?></label>
-        <p class="help-block"><strong><?=$options['default_paymethod']['code']?></strong> - <?=$options['default_paymethod']['description']?></p>
+            <?if(AWME\Stockist\Models\Settings::get('default_paymethod_id')):?>
+                <p class="help-block"><strong><?=$options['default_paymethod']['code']?></strong> - <?=$options['default_paymethod']['description']?></p>
+            <?else:?>
+                <p class="help-block">
+                    <?=trans('awme.stockist::lang.messages.please_check_your_configuration')?>
+
+                </p>
+            <?endif;?>
     </div>
 </div>
 <?endif;?>

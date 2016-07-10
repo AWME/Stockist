@@ -50,6 +50,7 @@ class SalePayMethod extends Model
             $total = Calc::suma([$payConcept, Calc::percent($PayMethod->tax_amount, $payConcept)]); 
         }else $total = $payConcept;
 
+        $this->taxes = $PayMethod->tax_type.$PayMethod->tax_amount;
         $this->total = $total;
     }
 }
