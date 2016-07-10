@@ -1,3 +1,9 @@
+<style>
+    div.default-paymethod .checkbox.custom-checkbox {
+    margin-top: -10px;
+    margin-bottom: -25px;
+}
+</style>
 <a
     data-control="popup"
     data-size="huge"
@@ -37,3 +43,13 @@
         <?= e(trans('backend::lang.relation.remove')) ?>
     </button>
 <?php endif ?>
+
+<?if(AWME\Stockist\Models\Settings::get('show_default_payment')):?>
+<div class="default-paymethod pull-right">
+    <div class="checkbox custom-checkbox">
+        <input id="dfpaymethod" name="df_paymethod" value="enabled" type="checkbox" <?= (AWME\Stockist\Models\Settings::get('use_auto_payment')) ? 'checked="checked"':''?> disabled="disabled">
+        <label class="choice" for="dfpaymethod"> <?=trans('awme.stockist::lang.settings.use_default_paymethod_enable')?></label>
+        <p class="help-block"><strong><?=$options['default_paymethod']['code']?></strong> - <?=$options['default_paymethod']['description']?></p>
+    </div>
+</div>
+<?endif;?>

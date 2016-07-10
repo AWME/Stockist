@@ -25,13 +25,14 @@ tabs:
             descriptionFrom: name
             span: left
 
+            
         use_scanner:
             label: awme.stockist::lang.settings.use_scanner
             tab: 'awme.stockist::lang.settings.general_tab'
             comment: 'awme.stockist::lang.settings.use_scanner_comment'
             type: switch
             span: right
-            default: true
+            default: false
         use_taxes:
             label: awme.stockist::lang.settings.use_manual_taxes
             tab: 'awme.stockist::lang.settings.general_tab'
@@ -39,6 +40,26 @@ tabs:
             type: switch
             span: right
             default: true
+        use_auto_payment:
+            label: awme.stockist::lang.settings.use_auto_payment
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.use_auto_payment_comment'
+            type: switch
+            span: right
+            default: false
+        show_default_payment:
+            label: awme.stockist::lang.settings.show_default_payment
+            tab: 'awme.stockist::lang.settings.general_tab'
+            comment: 'awme.stockist::lang.settings.show_default_payment_comment'
+            type: switch
+            span: right
+            default: false
+        default_clientname:
+            label: awme.stockist::lang.settings.default_client_name
+            tab: 'awme.stockist::lang.settings.general_tab'
+            commentAbove: 'awme.stockist::lang.settings.default_client_name_above'
+            placeholder: 'awme.stockist::lang.settings.default_client_name_place'   
+            span: left
         use_print:
             label: awme.stockist::lang.settings.use_print
             tab: 'awme.stockist::lang.settings.general_tab'

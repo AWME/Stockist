@@ -6,6 +6,13 @@ columns:
     id:
         label: ID
         width: 5%
+    
+    status:
+        label: awme.stockist::lang.invoice.status
+        width: 10%
+        type: partial
+        path: ~/plugins/awme/stockist/models/sale/_status_column.htm
+
     created_at:
         label: backend::lang.access_log.created_at
         type: timetense
@@ -27,9 +34,6 @@ columns:
     #    relation: products_pivot_model
     #    select: concat(name)
 
-    status:
-        label: awme.stockist::lang.invoice.status
-        width: 8%
 
     fullname:
         label: awme.stockist::lang.invoice.fullname

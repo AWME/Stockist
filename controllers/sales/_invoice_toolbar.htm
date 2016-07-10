@@ -122,7 +122,22 @@
                     <?=e(trans('awme.stockist::lang.invoice.print'));?>
                 </button>
             <?endif;?>
+            
+            <?php if(!$this->isStatus($formModel->status, ['open'])):?>
+            <button 
+                data-hotkey="ctrl+space" 
+                data-toggle="tooltip"
+                data-placement="top"
+                data-delay="500"
+                data-original-title="<?=trans('awme.stockist::lang.sales.new_sale')?> (Ctrl+Space)"
 
+                class="btn btn-sm btn-default oc-icon-plus pull-left"
+                type="button" 
+                onclick="window.location.href='<?= Backend::url('awme/stockist/sales/create') ?>'">
 
+                <?=e(trans('awme.stockist::lang.sales.new_sale'))?>
+                    
+            </button>
+            <?endif;?>
         </div>
     </div>

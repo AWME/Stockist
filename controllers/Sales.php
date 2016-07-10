@@ -49,6 +49,7 @@ class Sales extends Controller
         $this->addJs($this->assetsPath.'/js/print-this.js');
     }
 
+
     /**
      * Update
      */

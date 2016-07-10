@@ -101,6 +101,7 @@ class Sale extends Model
         $this->setTotal();      # Operación del total de la venta.
 
         $this->seller_id = BackendAuth::getUser()->id;
+
     }
 
     public function afterDelete()
@@ -108,7 +109,10 @@ class Sale extends Model
         SaleProduct::where('sale_id', $this->id)->delete();
     }
 
-
+    public function afterCreate()
+    {
+        $this->setInvoiceNumber();
+    }
 /**
  * ===================================
  * FUNCTIONS
@@ -406,20 +410,43 @@ class Sale extends Model
 
         #Requiere pagos
         if(!count($this->pay_methods) >= 1)
-            throw new ValidationException([
+        {
+            #PAGO AUTOMATICO
+            if(Settings::get('use_auto_payment') && !empty(Settings::get('default_paymethod_id')))
+            {
+                $Payment = new SalePayMethod;
+                $Payment->sale_id       = $this->id;
+                $Payment->pay_method_id = Settings::get('default_paymethod_id');
+                $Payment->concept       = $this->total;
+                $Payment->save();
+            }else {
+                throw new ValidationException([
                    'error_message' => trans('awme.stockist::lang.errors.validate_status_close_paymethods')
-                ]);
+                   ]);
+            }   
+        }
 
         #Requiere pago exacto
-        if($this->getTotalPaid() != $this->total)
+        if($this->getTotalPaid('concept') != $this->total)
             throw new ValidationException([
                    'error_message' => trans('awme.stockist::lang.sales.error_total_paid')
                 ]);
 
 
         //it's ok...
-        # Crea pagos en caja.
-        foreach ($this->pay_methods as $key => $value) 
+        # confirma la venta y envia a caja.
+        $this->makeSale();
+
+        Flash::success(trans('awme.stockist::lang.messages.closed_sale_success'));
+        
+        $this->status = 'closed';
+    }
+
+    public function makeSale()
+    {
+        $Paymethods = Sale::find($this->id)->pay_methods;
+
+        foreach ($Paymethods as $key => $value) 
         {    
             $saleCode = trans('awme.stockist::lang.sales.shortsale');
             #Paymethod code, VTA, #number, Invoice Number
@@ -431,11 +458,9 @@ class Sale extends Model
 
         #Quita mercadería vendida del stock
         $this->rePutStockOnProducts('deduct');
-
-        Flash::success(trans('awme.stockist::lang.messages.closed_sale_success'));
-        
-        $this->status = 'closed';
     }
+
+
 
     /**
      * getTotalPaid
@@ -455,6 +480,36 @@ class Sale extends Model
         return number_format($total, 2, '.', '');
     }
 
+
+/**
+ * ===================================
+ * MUTATORS
+ * ===================================
+ *
+ */
+
+    /**
+     * Setear nombre por defecto a las ventas anonimas
+     * @return string fullname
+     */
+    public function setFullNameAttribute($value)
+    {
+        $default_name = Settings::get('default_clientname');
+        if(!$value)
+            if($default_name)
+                $value = $default_name;
+            else $value = trans('awme.stockist::lang.settings.default_client_name_df');
+       
+       $this->attributes['fullname'] = ucfirst($value);
+    }
+    
+
+    public function setInvoiceNumber()
+    {
+        if(empty(Request::input('Sale.invoice')))
+            $this->invoice = str_pad((int) $this->id, 6,"0",STR_PAD_LEFT).'-'.str_pad((int) random_int(1, 99999999), 8,"0",STR_PAD_LEFT);
+            $this->save();
+    }
 
 /**
  * ===================================

@@ -1,0 +1,16 @@
+<?php 
+    $colors = [
+        'open' => 'danger',
+        'pause' => 'danger',
+        'budget' => 'info',
+        'senate' => 'success',
+        'closed' => 'muted',
+        'canceled' => 'muted',
+    ];
+
+    $color = $colors[$value];
+?>
+
+<span style="<?=($value == 'canceled') ? 'text-decoration: line-through;' : ''?>" class="oc-icon-circle text-<?=($color) ? $color : 'muted';?>">
+<?=trans('awme.stockist::lang.invoice.tag_'.$value)?>
+</span>
