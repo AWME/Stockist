@@ -1,0 +1,8 @@
+<?php use AWME\Stockist\Classes\Widget;?>
+<div class="scoreboard-item control-chart" data-control="chart-pie">
+    <ul>
+        <li data-color="#95b753"><?=e(trans('awme.stockist::lang.invoice.tag_senate'))?> <span><?=Widget::getStatuses('month', 'senate')?></span></li>
+        <li data-color="#31708f"><?=e(trans('awme.stockist::lang.invoice.tag_budget'))?> <span><?=Widget::getStatuses('month', 'budget')?></span></li>
+        <li data-color="#cc3300"><?=e(trans('awme.stockist::lang.invoice.tag_open_and_pause'))?> <span><?=(Widget::getStatuses('month', 'pause') + Widget::getStatuses('today', 'open'))?></span></li>
+    </ul>
+</div>

@@ -47,6 +47,12 @@ tabs:
             type: switch
             span: right
             default: false
+        default_clientname:
+            label: awme.stockist::lang.settings.default_client_name
+            tab: 'awme.stockist::lang.settings.general_tab'
+            commentAbove: 'awme.stockist::lang.settings.default_client_name_above'
+            placeholder: 'awme.stockist::lang.settings.default_client_name_place'   
+            span: left
         show_default_payment:
             label: awme.stockist::lang.settings.show_default_payment
             tab: 'awme.stockist::lang.settings.general_tab'
@@ -54,12 +60,6 @@ tabs:
             type: switch
             span: right
             default: false
-        default_clientname:
-            label: awme.stockist::lang.settings.default_client_name
-            tab: 'awme.stockist::lang.settings.general_tab'
-            commentAbove: 'awme.stockist::lang.settings.default_client_name_above'
-            placeholder: 'awme.stockist::lang.settings.default_client_name_place'   
-            span: left
         use_print:
             label: awme.stockist::lang.settings.use_print
             tab: 'awme.stockist::lang.settings.general_tab'
@@ -144,3 +144,16 @@ tabs:
             placeholder: "awme.stockist::lang.settings.holder_right_message"
             span: left
             commentAbove: "awme.stockist::lang.settings.right_bottom_message"
+
+
+        widget_sales:
+            label: 'Ventas'
+            commentAbove: 'Mostrar numero de ventas'
+            tab: 'Widgets'
+            type: dropdown
+            span: left
+            options: 
+                today: "Hoy"
+                week: "Semana"
+                month: "Mes"
+                year: "Año"

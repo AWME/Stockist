@@ -1,7 +1,5 @@
 <?php namespace AWME\Stockist\Controllers;
 
-use Schema;
-
 use Flash;
 use Request;
 use Backend;
@@ -51,11 +49,6 @@ class Sales extends Controller
         $this->addJs($this->assetsPath.'/js/print-this.js');
     }
 
-    public function schemas()
-    {
-        
-
-    }
 
     /**
      * Update

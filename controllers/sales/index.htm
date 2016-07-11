@@ -1,6 +1,13 @@
+<?php use AWME\Stockist\Models\Sale;?>
 <div class="list-header">
-    <?php
-    	#$this->makePartial('widgets_sales_list') 
-    ?>
+    <div class="scoreboard">
+        <div data-control="toolbar">
+            <?=$this->makePartial('widgets/status_scoreboard')?>
+            <?=$this->makePartial('widgets/sales_scoreboard')?>
+            <?=$this->makePartial('widgets/profit_scoreboard')?>
+            <?=$this->makePartial('widgets/seller_scoreboard')?>
+            
+        </div>
+    </div>
 </div>
 <?= $this->listRender() ?>
