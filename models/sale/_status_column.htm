@@ -1,16 +1,34 @@
 <?php 
-    $colors = [
-        'open' => 'danger',
-        'pause' => 'danger',
-        'budget' => 'info',
-        'senate' => 'success',
-        'closed' => 'muted',
-        'canceled' => 'muted',
+    $styles = [
+        'open' => [
+        	'color'=>'danger',
+        	'icon' => 'icon-shopping-cart'
+        	],
+        'pause' => [
+        	'color'=>'danger',
+        	'icon' => 'icon-pause'
+        	],
+        'budget' => [
+        	'color'=>'info',
+        	'icon' => 'icon-file-excel-o'
+        	],
+        'senate' => [
+        	'color'=>'success',
+        	'icon' => 'icon-gavel'
+        	],
+        'closed' => [
+        	'color'=>'muted',
+        	'icon' => 'icon-check'
+        	],
+        'canceled' => [
+        	'color'=>'muted',
+        	'icon' => 'icon-times'
+        	],
     ];
 
-    $color = $colors[$value];
+    $style = $styles[$value];
 ?>
 
-<span style="<?=($value == 'canceled') ? 'text-decoration: line-through;' : ''?>" class="oc-icon-circle text-<?=($color) ? $color : 'muted';?>">
+<span style="<?=($value == 'canceled') ? 'text-decoration: line-through;' : ''?>" class="oc-<?=$style['icon']?> text-<?=$style['color']?>">
 <?=trans('awme.stockist::lang.invoice.tag_'.$value)?>
 </span>

@@ -1,0 +1,12 @@
+<?php 
+    $colors = [
+        'withdraw' => 'danger',
+        'deposit' => 'success',
+    ];
+
+    $color = @$colors[$record['operation']];
+?>
+
+<span class="text-<?=($color)?>">
+$ <?=$value?>
+</span>

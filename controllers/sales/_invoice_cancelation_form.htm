@@ -16,6 +16,7 @@
                         <p class="help-block before-field"><?=trans('awme.stockist::lang.invoice.cancelation_above')?></p>
 
                         <div class="checkbox custom-checkbox">
+                            <input type="hidden" name="inv_status" value="<?=$sale->status?>">
                             <input checked="checked" id="checkbox-example2" name="invoice_repayment" value="1" type="checkbox">
                             <label class="choice" for="checkbox-example2"> <?=trans('awme.stockist::lang.invoice.cancelation_label_withdraw')?></label>
                             <p class="help-block"><?=trans('awme.stockist::lang.invoice.cancelation_above_withdraw')?></p>

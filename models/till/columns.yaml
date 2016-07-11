@@ -7,23 +7,31 @@ columns:
         label: ID
         invisible: true
     
+    operation:
+        label: awme.stockist::lang.tills.operation
+        invisible: true
+        width: 6%
+        type: partial
+        path: ~/plugins/awme/stockist/models/till/_operation_column.htm
+
     created_at:
         label: backend::lang.access_log.created_at
         type: timetense
         format: 'H:i:s d/m/y'
         width: 10%
 
-    operation:
-        label: awme.stockist::lang.tills.operation
-        invisible: true
 
     concept:
         label: awme.stockist::lang.paymethods.concept
+        width: 10%
+        type: partial
+        path: ~/plugins/awme/stockist/models/till/_concept_column.htm
 
     seller:
         label: awme.stockist::lang.sales.seller
         relation: seller
         select: concat(first_name)
+        width: 10%;
     
     description:
         label: awme.stockist::lang.tills.description
@@ -31,3 +39,7 @@ columns:
 
     amount:
         label: awme.stockist::lang.tills.amount
+        width: 10%
+        type: partial
+        path: ~/plugins/awme/stockist/models/till/_amount_column.htm
+

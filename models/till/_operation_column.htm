@@ -1,0 +1,17 @@
+<?php 
+    $style = [
+        'withdraw' => [
+        	'icon'=> 'icon-upload', 
+        	'color'=> 'danger', 
+        	],
+        'deposit' => [
+        	'icon'=> 'icon-download', 
+        	'color'=> 'success', 
+        	]
+    ];
+
+?>
+
+<span class="oc-<?=$style[$value]['icon']?> text-<?=$style[$value]['color']?>">
+<?=trans('awme.stockist::lang.tills.tag_'.$value)?>
+</span>

@@ -233,7 +233,7 @@ class Sale extends Model
 
                     #Reembolso en caja
                     if(Request::input('invoice_repayment'))
-                        $this->putPayOnTill('withdraw', 'sale_cancelation', $description, [], $this->getTotalPaid('total')); 
+                        $this->putPayOnTill('withdraw', 'sale_'.Request::input('inv_status').'_cancelation', $description, [], $this->getTotalPaid('total')); 
 
                     #Reponer mercadería
                     if(Request::input('invoice_restock'))
@@ -308,6 +308,12 @@ class Sale extends Model
         if(!count($this->pay_methods) >= 1)
             throw new ValidationException([
                    'error_message' => trans('awme.stockist::lang.errors.validate_status_senate_paymethods')
+                ]);
+
+        #Requiere metodos de pagos agregados
+        if($this->getTotalPaid('concept') >= $this->total)
+            throw new ValidationException([
+                   'error_message' => trans('awme.stockist::lang.sales.error_total_paid')
                 ]);
 
         $this->status = 'senate';
