@@ -1,0 +1,16 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+scopes:
+    created_at:
+        label: awme.stockist::lang.filters.period
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+
+    customer:
+        label: awme.stockist::lang.filters.sellers
+        modelClass: Backend\Models\User
+        conditions: seller_id in (:filtered)
+        select: concat(first_name, ' ', last_name)
+        nameFrom: full_name
+        

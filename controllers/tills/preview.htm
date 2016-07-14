@@ -1,22 +1,49 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('awme/stockist/tills') ?>">Tills</a></li>
-        <li><?= e($this->pageTitle) ?></li>
+        <li><a href="<?= Backend::url('awme/stockist/tills') ?>"><?=trans('awme.stockist::lang.tills.tag_'.$formModel->operation)?></a></li>
+        <li><?=trans('awme.stockist::lang.tills.tag_'.$formModel->concept)?></li>
     </ul>
 <?php Block::endPut() ?>
 
 <?php if (!$this->fatalError): ?>
 
-    <div class="form-preview">
-        <?= $this->formRenderPreview() ?>
-    </div>
-
 <?php else: ?>
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
 <?php endif ?>
 
-<p>
-    <a href="<?= Backend::url('awme/stockist/tills') ?>" class="btn btn-default oc-icon-chevron-left">
-        <?= e(trans('backend::lang.form.return_to_list')) ?>
-    </a>
-</p>
+
+<?= $this->makePartial('widgets/tills_scoreboard') ?>
+<?= $this->makePartial('widgets/tills_toolbar') ?>
+
+
+<div class="control-tabs content-tabs tabs-offset" data-control="tab">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#invoiceTemplate"><?=e(trans('awme.stockist::lang.tills.concept_till_report'));?></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="padded-container">
+                <?= $this->makePartial('report_iframe') ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('#printInvoice').click(function(){
+        $("#InvoiceBill").printThis({
+            debug: false,               //* show the iframe for debugging
+            importCSS: true,            //* import page CSS
+            importStyle: true,         //* import style tags
+            printContainer: true,       //* grab outer container as well as the contents of the selector
+            //loadCSS: "path/to/my.css",  //* path to additional css file - us an array [] for multiple
+            pageTitle: "",              //* add title to print page
+            removeInline: false,        //* remove all inline styles from print elements
+            printDelay: 333,            //* variable print delay; depending on complexity a higher value may be necessary
+            header: null,               //* prefix to html
+            formValues: true            //* preserve input/form values
+        });
+    });
+</script>
+

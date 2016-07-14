@@ -1,0 +1,85 @@
+fields:
+    operation:
+        cssClass: hide
+        default: till_report
+    
+    amount:
+        cssClass: hide
+        default: 00.00
+    
+    description:
+        default: report description
+        cssClass: hide
+
+    concept:
+        label: 'awme.stockist::lang.tills.concept_till_report'
+        commentAbove: 'awme.stockist::lang.tills.concept_till_report_above'
+        span: left
+        required: true
+        type: radio
+        options:
+            daily_report: 'awme.stockist::lang.tills.tag_daily_report'
+            period_report: 'awme.stockist::lang.tills.tag_period_report'
+    
+    record_data[report_date]:
+        label: 'awme.stockist::lang.tills.select_a_date'
+        type: datepicker
+        mode: date
+        span: right
+        trigger:
+            action: show
+            field: concept
+            condition: value[daily_report]
+
+    record_data[report_date_from]:
+        label: awme.stockist::lang.tills.select_date_from
+        type: datepicker
+        mode: date
+        span: right
+        required: true
+        trigger:
+            action: show
+            field: concept
+            condition: value[period_report]
+
+    record_data[report_date_to]:
+        label: awme.stockist::lang.tills.select_date_to
+        type: datepicker
+        mode: date
+        span: right
+        required: true
+        trigger:
+            action: show
+            field: concept
+            condition: value[period_report]
+
+    record_data[options]:
+        label: awme.stockist::lang.tills.make_report
+        commentAbove: 'awme.stockist::lang.tills.make_report_above'
+        type: checkboxlist
+        span: right
+        default: 
+            - show_sellers
+            - show_dates
+            - show_description
+            - show_concepts
+        options: 
+            show_sellers: awme.stockist::lang.tills.make_report_option_show_seller
+            show_dates: awme.stockist::lang.tills.make_report_option_show_date
+            show_concepts: awme.stockist::lang.tills.make_report_option_show_concept
+            show_description: awme.stockist::lang.tills.make_report_option_show_descp
+        trigger:
+            action: hide
+            field: concept
+            condition: value[]
+
+    record_data[customers]:
+        label: awme.stockist::lang.tills.filter_seller
+        commentAbove: awme.stockist::lang.tills.till_report_sellers_above
+        type: checkboxlist
+        span: left
+        options: listFilterCustomer
+        trigger:
+            action: hide
+            field: concept
+            condition: value[]

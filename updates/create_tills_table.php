@@ -16,7 +16,7 @@ class CreateTillsTable extends Migration
             /**
              * Caja registradora
              */
-            $table->enum('operation', ['deposit', 'withdraw']);     # Tipo de operación (Ingreso o Retiro de dinero) 
+            $table->enum('operation', ['deposit', 'withdraw','till_report']);     # Tipo de operación (Ingreso o Retiro de dinero) 
             $table->string('concept');                              # Concepto de operación (Nueva Venta, Ingreso de Cambio, Gasto)
             $table->longText('description')->nullable();            # Descripción de movimiento
             

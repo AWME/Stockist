@@ -1,1 +1,26 @@
-fields: {  }
+fields:
+    concept:
+        type: text
+        cssClass: hide
+        default: manual_till
+    operation:
+        label: 'awme.stockist::lang.tills.operation'
+        commentAbove: 'awme.stockist::lang.tills.operation_above'
+        span: left
+        required: true
+        type: radio
+        options:
+            deposit: 'awme.stockist::lang.tills.tag_deposit'
+            withdraw: 'awme.stockist::lang.tills.tag_withdraw'
+    
+    description:
+        label: 'awme.stockist::lang.paymethods.description'
+        commentAbove: 'awme.stockist::lang.tills.description_above'
+        span: right
+        type: textarea
+        size: small
+
+    amount:
+        label: 'awme.stockist::lang.tills.amount'
+        type: number
+        span: right

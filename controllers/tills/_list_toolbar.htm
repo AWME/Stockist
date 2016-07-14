@@ -1,3 +1,10 @@
 <div data-control="toolbar">
-        <a href="<?= Backend::url('awme/stockist/tills/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></a>
+        <a href="#"
+        data-control="popup"
+        data-handler="onCreateForm"
+        data-request-data="till_mode: 1" class="btn btn-primary oc-icon-plus"><?= e(trans('awme.stockist::lang.tills.create_till')) ?></a>
+        
+        <?=$this->makePartial('~/plugins/awme/stockist/models/till/_filter_toolbar.htm')?>
     </div>
+
+

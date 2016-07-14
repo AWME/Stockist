@@ -1,0 +1,26 @@
+<div class="scoreboard">
+    <div data-control="toolbar">
+        <div style="margin-left: 25px;" class="scoreboard-item title-value">
+            <h4><?=e(trans('awme.stockist::lang.tills.concept_till_report'));?></h4>
+            <p>#<?= $formModel->id ?></p>
+            <p class="description"><?=e(trans('backend::lang.import_export.created'));?>: <?= $formModel->created_at->format('H:i d/m/y') ?></p>
+        </div>
+        <?php if ($formModel->seller_id): ?>
+            <div class="scoreboard-item title-value">
+                <h4><?=e(trans('awme.stockist::lang.sales.seller'));?></h4>
+                <p><?= $formModel->seller->first_name ?></p>
+                <p class="description"><?= $formModel->seller->fullname ?></p>
+            </div>
+        <?php endif ?>
+        <div class="scoreboard-item title-value">
+            <h4><?=e(trans('awme.stockist::lang.sales.profit'));?></h4>
+            <p>$<?= $profit ?></p>
+            <p class="description"><?=e(trans('awme.stockist::lang.tills.balance'));?>: $<?= ($profit - $expenses) ?></p>
+        </div>
+        <div class="scoreboard-item title-value">
+            <h4><?=e(trans('awme.stockist::lang.sales.withdraws'));?></h4>
+            <p>$<?= $expenses ?></p>
+            <p class="description"><?=e(trans('awme.stockist::lang.tills.balance'));?>: $<?= ($profit - $expenses) ?></p>
+        </div>
+    </div>
+</div>

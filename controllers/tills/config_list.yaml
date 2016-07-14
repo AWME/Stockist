@@ -9,3 +9,10 @@ toolbar:
     search:
         prompt: 'backend::lang.list.search_prompt'
 #recordUrl: 'awme/stockist/tills/update/:id'
+recordsPerPage: 30
+defaultSort:
+    column: created_at
+    direction: desc
+
+# Filter widget configuration
+filter: config_filter.yaml

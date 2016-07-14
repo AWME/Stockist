@@ -13,7 +13,7 @@ recordUrl: 'awme/stockist/sales/update/:id'
 recordsPerPage: 30
 # Default sorting column
 defaultSort:
-    column: created_at
+    column: updated_at
     direction: desc
 
 # Filter widget configuration

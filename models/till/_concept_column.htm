@@ -2,11 +2,19 @@
     $colors = [
         'withdraw' => 'danger',
         'deposit' => 'success',
+        'till_report' => 'warning',
     ];
 
     $color = @$colors[$record['operation']];
 ?>
 
 <span class="text-<?=($color)?>">
-<?=trans('awme.stockist::lang.tills.tag_'.$value)?>
+<?php if($record['operation'] == 'till_report'):?>
+    <a href="<?=Backend::url('awme/stockist/tills/preview/'.$record['id'])?>"> 
+        <?=trans('awme.stockist::lang.tills.tag_'.$value)?>   
+    </a>
+<?endif?>
+<?php if($record['operation'] != 'till_report'):?>
+    <?=trans('awme.stockist::lang.tills.tag_'.$value)?>
+<?endif?>
 </span>

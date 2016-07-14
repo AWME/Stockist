@@ -1,0 +1,25 @@
+<div class="form-buttons buttons-offset">
+    <div class="loading-indicator-container">
+        <a
+            data-toggle="tooltip"
+            data-placement="bottom"
+            data-delay="500"
+            data-original-title="<?= e(trans('backend::lang.form.return_to_list')) ?>"
+            href="<?= Backend::url('awme/stockist/tills') ?>"
+            class="btn btn-sm btn-default icon oc-icon-arrow-left pull-left"
+            ></a>
+        <?php if($options['allow_print']):?>
+            <button
+                href="javascript:;" 
+                id="printInvoice"
+                class="btn btn-sm btn-default icon oc-icon-print pull-left"
+                data-hotkey="F4"
+                data-toggle="tooltip"
+                data-placement="top"
+                data-delay="500"
+                data-original-title="<?= trans('awme.stockist::lang.invoice.print_title'); ?> (F4)">
+                <?=e(trans('awme.stockist::lang.invoice.print'));?>
+            </button>
+        <?endif;?>
+    </div>
+</div>

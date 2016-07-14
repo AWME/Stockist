@@ -6,10 +6,10 @@ columns:
     id:
         label: ID
         invisible: true
+        width: 5%
     
     operation:
         label: awme.stockist::lang.tills.operation
-        invisible: true
         width: 6%
         type: partial
         path: ~/plugins/awme/stockist/models/till/_operation_column.htm
@@ -19,7 +19,6 @@ columns:
         type: timetense
         format: 'H:i:s d/m/y'
         width: 10%
-
 
     concept:
         label: awme.stockist::lang.paymethods.concept
