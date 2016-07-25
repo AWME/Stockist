@@ -1,4 +1,5 @@
 title: PayMethods
 modelClass: AWME\Stockist\Models\PayMethod
+nameFrom: updated_at
 toolbar:
     buttons: reorder_toolbar
