@@ -12,9 +12,10 @@ class CreateProductsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('category_id')->nullable();
-            $table->string('sku')->unique();
-            $table->string('name')->index();
-            $table->string('slug')->index()->unique();
+            $table->string('sku');
+            $table->string('name')->index()->nullable();
+            $table->string('slug')->index();
+            $table->string('image')->nullable();                      
             $table->longText('description');
             $table->longText('tags')->nullable();
             $table->decimal('price_cost', 10, 2)->default(0)->nullable();
@@ -23,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('stock')->default(0)->nullable();
             $table->boolean('is_enabled')->default(false);
             $table->boolean('is_stockable')->default(false);
+
             $table->timestamps();
         });
     }

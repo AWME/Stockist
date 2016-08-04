@@ -15,10 +15,9 @@ class Category extends Model
     protected $rules = [
         'name' => ['required', 'between:1,255'],
         'slug' => [
-            'required',
+            #'required',
             'alpha_dash',
             'between:1,255',
-            'unique:awme_stocket_categories'
         ]
     ];
 

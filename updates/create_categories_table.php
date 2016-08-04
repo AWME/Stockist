@@ -12,9 +12,9 @@ class CreateCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->index();
-            $table->string('slug')->index()->unique();
+            $table->string('slug')->index();
             $table->text('description')->nullable();
-            $table->boolean('is_enabled')->default(false);
+            $table->boolean('is_enabled')->default(true);
             $table->boolean('is_visible')->default(true);
             $table->timestamps();
         });

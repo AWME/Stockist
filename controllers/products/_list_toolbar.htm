@@ -1,3 +1,8 @@
 <div data-control="toolbar">
     <button type="button" data-hotkey="ctrl+space" onclick="window.location.href='<?= Backend::url('awme/stockist/products/create') ?>'" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></button>
+    
+    <button style="margin-left: 10px;" type="button" onclick="window.location.href='<?= Backend::url('awme/stockist/products/export') ?>'" class="btn btn-info oc-icon-download pull-right"><?= trans('awme.stockist::lang.messages.export_records')?></button>
+
+    <button style="margin-left: 10px;" type="button" onclick="window.location.href='<?= Backend::url('awme/stockist/products/import') ?>'" class="btn btn-info oc-icon-upload pull-right"><?= trans('awme.stockist::lang.messages.import_records')?></button>
+    
 </div>

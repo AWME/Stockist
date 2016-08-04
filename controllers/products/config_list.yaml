@@ -2,8 +2,14 @@ list: $/awme/stockist/models/product/columns.yaml
 modelClass: AWME\Stockist\Models\Product
 title: Products
 noRecordsMessage: 'backend::lang.list.no_records'
+# Records to display per page
+recordsPerPage: 25
+
+# Displays the list column set up button
 showSetup: true
-showCheckboxes: true
+# Displays the sorting link on each column
+showSorting: true
+
 toolbar:
     buttons: list_toolbar
     search:

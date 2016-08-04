@@ -24,9 +24,7 @@ columns:
     iva:
         label: awme.stockist::lang.products.iva
         invisible: true
-    categories:
+    category_id:
         label: awme.stockist::lang.categories.categories
-        relation: category
-        valueFrom: name
     image:
         label: awme.stockist::lang.products.image

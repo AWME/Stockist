@@ -1,0 +1,15 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: awme.stockist::lang.messages.import_products
+    modelClass: AWME\Stockist\Models\ProductImport
+    list: $/awme/stockist/models/product/import-export-columns.yaml
+
+export:
+    title: awme.stockist::lang.messages.export_products
+    modelClass: AWME\Stockist\Models\ProductExport
+    list: $/awme/stockist/models/product/import-export-columns.yaml
+    redirect: awme/stockist/products
+    fileName: products.csv

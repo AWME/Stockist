@@ -14,13 +14,17 @@ class Product extends Model
      */
     public $belongsTo = [
         'categories'    => ['AWME\Stockist\Models\Category', 'key' => 'category_id'],
+        'category'    => ['AWME\Stockist\Models\Category', 'key' => 'category_id'],
     ];
 
     public $belongsToMany = [
         'products' => ['AWME\Stockist\Models\Product', 'table' => 'awme_octomain_sales_products']
     ];
 
-
+    /**
+     * @var array Fillable fields
+     */
+    protected $fillable = ['id','category_id','name','sku','slug','stock','price_cost','price_sale','iva','image'];
 
     /**
      * @var array Validation rules
@@ -30,14 +34,13 @@ class Product extends Model
         'sku' => ['required', 'unique:awme_stockist_products'],
         'slug' => [
             'unique:awme_stockist_products',
-            'required',
             'alpha_dash',
             'between:1,255',
         ],
         'stock' => ['required','numeric'],
-        'price_cost' => ['required','numeric','min:00.10', 'max:99999999.99'],
-        'price_sale' => ['required','numeric','min:00.10', 'max:99999999.99'],
-        'iva' => ['numeric', 'max:99.99'],
+        'price_cost' => ['required','numeric','min:00.00', 'max:99999999.99'],
+        'price_sale' => ['required','numeric','min:00.00', 'max:99999999.99'],
+        'iva' => ['numeric', 'max:99.99']
     ];
 
     /*
