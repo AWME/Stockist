@@ -1,0 +1,15 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: awme.stockist::lang.messages.import_categories
+    modelClass: AWME\Stockist\Models\CategoryImport
+    list: $/awme/stockist/models/category/columns.yaml
+
+export:
+    title: awme.stockist::lang.messages.export_categories
+    modelClass: AWME\Stockist\Models\CategoryExport
+    list: $/awme/stockist/models/category/columns.yaml
+    redirect: awme/stockist/categories
+    fileName: categories.csv

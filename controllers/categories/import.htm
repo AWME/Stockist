@@ -1,0 +1,29 @@
+<?php Block::put('breadcrumb') ?>
+<style>div.control-breadcrumb {margin-bottom: 0;}
+</style>
+    <ul>
+        <li><a href="<?= Backend::url('awme/stockist/categories') ?>"><?=e(trans('awme.stockist::lang.categories.categories'))?></a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<div class="layout" style="padding:20px;">
+<?= Form::open(['class' => 'layout']) ?>
+
+    <div class="layout-row">
+        <?= $this->importRender() ?>
+    </div>
+
+    <div class="form-buttons">
+        <button
+            type="submit"
+            data-control="popup"
+            data-handler="onImportLoadForm"
+            data-keyboard="false"
+            class="btn btn-primary">
+            <?= trans('awme.stockist::lang.messages.import_records')?>
+        </button>
+    </div>
+
+<?= Form::close() ?>
+</div>

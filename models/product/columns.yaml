@@ -28,5 +28,6 @@ columns:
         label: awme.stockist::lang.categories.categories
         relation: category
         valueFrom: name
+        searchable: true
     image:
         label: awme.stockist::lang.products.image
