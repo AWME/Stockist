@@ -239,6 +239,7 @@
         'price' => 'Precio',
         'iva' => 'IVA %',
         'quantity' => 'Cantidad',
+        'image' => 'Imagen',
     ],
     'categories' => [
         'menu_label' => 'Categorías',
@@ -356,6 +357,13 @@
         'dates_are_required' => 'Por favor selecciona una fecha correcta',
     ],
     'messages' => [
+        'import_records' => 'Importar',
+        'export_records' => 'Exportar',
+        'import_products' => 'Importar Productos',
+        'export_products' => 'Exportar Productos',
+        'import_categories' => 'Importar Categorías',
+        'export_categories' => 'Exportar Categorías',
+        'error_delete_used_category' => 'No puede borrar una categoría que contiene productos. Hay: ',
         'status_pause_success' => 'Venta pausada con éxito',
         'status_budget_success' => 'Presupuesto guardado con éxito',
         'status_senate_success' => 'Señado!, se ha generado un ingreso automatico en caja por el monto pagado',
