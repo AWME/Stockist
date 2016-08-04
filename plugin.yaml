@@ -43,6 +43,9 @@ navigation:
                 permissions:
                     - awme.stockist.read_categories
 permissions:
+    awme.stockist.settings:
+        tab: 'awme.stockist::lang.plugin.name'
+        label: 'Stockist Settings'
     awme.stockist.usage:
         tab: 'awme.stockist::lang.plugin.name'
         label: 'awme.stockist::lang.permission.usage'

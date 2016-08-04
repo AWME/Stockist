@@ -20,7 +20,7 @@ class Plugin extends PluginBase
                 'class'       => 'AWME\Stockist\Models\Settings',
                 'order'       => 10,
                 'keywords'    => 'awme.stockist::lang.settings.keywords',
-                'permissions' => ['acme.users.access_settings']
+                'permissions' => ['awme.stockist.settings']
             ]
         ];
     }
