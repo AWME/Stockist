@@ -364,6 +364,8 @@
         'import_categories' => 'Importar Categorías',
         'export_categories' => 'Exportar Categorías',
         'error_delete_used_category' => 'No puede borrar una categoría que contiene productos. Hay: ',
+        'error_delete_sold_item' => 'No se puede borrar un producto que ha sido utilizado en una venta Hay: ',
+        'error_delete_used_paymethod' => 'No se puede borrar un metodo de pago que ha sido utilizado en una venta Hay: ',
         'status_pause_success' => 'Venta pausada con éxito',
         'status_budget_success' => 'Presupuesto guardado con éxito',
         'status_senate_success' => 'Señado!, se ha generado un ingreso automatico en caja por el monto pagado',

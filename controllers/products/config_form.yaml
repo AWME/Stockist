@@ -1,4 +1,4 @@
-name: Products
+name: awme.stockist::lang.products.product
 form: $/awme/stockist/models/product/fields.yaml
 modelClass: AWME\Stockist\Models\Product
 defaultRedirect: awme/stockist/products

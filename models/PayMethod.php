@@ -1,7 +1,8 @@
 <?php namespace AWME\Stockist\Models;
 
 use Model;
-
+use ValidationException;
+use AWME\Stockist\Models\SalePayMethod;
 /**
  * Model
  */
@@ -33,4 +34,15 @@ class PayMethod extends Model
      * @var string The database table used by the model.
      */
     public $table = 'awme_stockist_pay_methods';
+
+    public function beforeDelete()
+    {
+        $sales = SalePayMethod::where('pay_method_id', $this->id)->count();
+        if($sales > 0)
+        {
+            throw new ValidationException([
+                   'error_message' => trans('awme.stockist::lang.messages.error_delete_used_paymethod').$sales.' '.trans('awme.stockist::lang.sales.sales')
+                ]);
+        }
+    }
 }

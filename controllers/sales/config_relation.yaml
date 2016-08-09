@@ -9,8 +9,10 @@ products_pivot_model:
         showSearch: true
         showSetup: true
     manage:
-        list: ~/plugins/awme/stockist/models/product/columns.yaml
+        list: ~/plugins/awme/stockist/models/product/relation-columns.yaml
         showSearch: true
+        # Records to display per page
+        recordsPerPage: 10
     pivot:
         form: ~/plugins/awme/stockist/models/saleproductpivot/fields.yaml
 

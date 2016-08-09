@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        invisible: true
+    sku:
+        label: SKU
+        searchable: true
+    name:
+        label: awme.stockist::lang.products.product_name
+        searchable: true
+    stock:
+        label: Stock
+    price_cost:
+        label: awme.stockist::lang.products.price_cost
+        invisible: true
+    price_sale:
+        label: awme.stockist::lang.products.price_sale
+    iva:
+        label: awme.stockist::lang.products.iva
+        invisible: true

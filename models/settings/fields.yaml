@@ -146,14 +146,14 @@ tabs:
             commentAbove: "awme.stockist::lang.settings.right_bottom_message"
 
 
-        widget_sales:
-            label: 'Ventas'
-            commentAbove: 'Mostrar numero de ventas'
-            tab: 'Widgets'
-            type: dropdown
-            span: left
-            options: 
-                today: "Hoy"
-                week: "Semana"
-                month: "Mes"
-                year: "Año"
+#        widget_sales:
+#            label: 'Ventas'
+#            commentAbove: 'Mostrar numero de ventas'
+#            tab: 'Widgets'
+#            type: dropdown
+#            span: left
+#            options: 
+#                today: "Hoy"
+#                week: "Semana"
+#                month: "Mes"
+#                year: "Año"

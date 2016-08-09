@@ -22,7 +22,7 @@
 }
 </style>
     <ul>
-        <li><a href="<?= Backend::url('awme/stocket/products') ?>"><?=e(trans('awme.stocket::lang.products.products'))?></a></li>
+        <li><a href="<?= Backend::url('awme/stockist/products') ?>"><?=e(trans('awme.stockist::lang.products.products'))?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -40,6 +40,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('awme/stocket/products') ?>" class="btn btn-default">Return to product list</a></p>
+    <p><a href="<?= Backend::url('awme/stockist/products') ?>" class="btn btn-default">Return to product list</a></p>
 
 <?php endif ?>

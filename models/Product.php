@@ -1,7 +1,8 @@
 <?php namespace AWME\Stockist\Models;
 
 use Model;
-
+use ValidationException;
+use AWME\Stockist\Models\SaleProduct;
 /**
  * Model
  */
@@ -17,10 +18,7 @@ class Product extends Model
         'category'    => ['AWME\Stockist\Models\Category', 'key' => 'category_id'],
     ];
 
-    public $belongsToMany = [
-        'products' => ['AWME\Stockist\Models\Product', 'table' => 'awme_octomain_sales_products']
-    ];
-
+    
     /**
      * @var array Fillable fields
      */
@@ -53,4 +51,15 @@ class Product extends Model
      * @var string The database table used by the model.
      */
     public $table = 'awme_stockist_products';
+
+    public function beforeDelete()
+    {
+        $sales = SaleProduct::where('product_id', $this->id)->count();
+        if($sales > 0)
+        {
+            throw new ValidationException([
+                   'error_message' => trans('awme.stockist::lang.messages.error_delete_sold_item').$sales.' '.trans('awme.stockist::lang.sales.sales')
+                ]);
+        }
+    }
 }
