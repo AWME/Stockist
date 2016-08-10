@@ -27,7 +27,7 @@ columns:
     seller:
         label: awme.stockist::lang.sales.seller
         relation: seller
-        select: concat(first_name)
+        valueFrom: first_name
 
     #products:
     #    label: awme.stockist::lang.sales.seller
@@ -51,4 +51,4 @@ columns:
     paymethods:
         label: awme.stockist::lang.invoice.pay_methods
         relation: pay_methods
-        select: concat(code)
+        valueFrom: code
